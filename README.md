@@ -37,7 +37,7 @@ A study on improvement of Korean OCR accuracy using deep learning : https://scie
 cnn image classification : https://www.tensorflow.org/tutorials/images/classification?hl=en<br/> 
 cs231n Lesson 8 Localization, detection : https://www.youtube.com/watch?v=y1dBz6QPxBc&list=PL1Kb3QTCLIVtyOuMgyVgT-OeW0PYXl3j5&index=7<br/> 
 Ten thousand recipes (food photos) : https://www.10000recipe.com/<br/> 
-<img src="https://user-images.githubusercontent.com/27857543/172053129-430fab1a-7501-4141-bfd4-4c55ac1180f0.png" width="50%" height="50%"/>
+<img src="https://user-images.githubusercontent.com/27857543/172053129-430fab1a-7501-4141-bfd4-4c55ac1180f0.png" width="40%" height="40%"/>
 <img src="https://user-images.githubusercontent.com/27857543/172053402-b0c7b9bc-a5e2-41cd-8c33-39f7dcbd5e31.png" width="50%" height="50%"/>
 <img src="https://user-images.githubusercontent.com/27857543/172053430-464b3f22-ace8-48b0-98cc-92420cee088a.png" width="30%" height="30%"/>
 <img src="https://user-images.githubusercontent.com/27857543/172053456-f9b69c25-fac5-48c8-88fa-00847fe01d60.png" width="30%" height="30%"/>
