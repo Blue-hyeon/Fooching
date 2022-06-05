@@ -7,3 +7,6 @@ The target audience of our application is divided into two categories: PT traine
 
 # Project is useful
 It is a platform that matches these two, and beginners in health can get feedback on necessary information such as exercise and diet from the matched PT trainer, and the PT trainer provides feedback to users with less effort than members who do face-to-face.
+
+# Work
+![image](https://user-images.githubusercontent.com/27857543/172053129-430fab1a-7501-4141-bfd4-4c55ac1180f0.png)
