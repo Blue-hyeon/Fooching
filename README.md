@@ -2,6 +2,12 @@
 1:1 none face-to-face pt trainer matching platform
 People's interest in sports is very high. To diet or to build a body like this, I mainly do gym or home training. In the case of fitness, it is difficult for beginners to enter, and above all, the cost of PT is not high. I decided to create a platform for people who wanted to get into health but were having trouble starting and struggling with the cost.
 
+# Team Members
+김경훈 : https://github.com/rlarudgns617 
+박준구 : https://github.com/JunguPark  
+이승섭 : https://github.com/Leesungsup  
+이서현 : https://github.com/Blue-hyeon  
+
 # Who use
 The target audience of our application is divided into two categories: PT trainers and fitness beginners. 
 
