@@ -15,6 +15,28 @@ The target audience of our application is divided into two categories:   PT trai
 It is a platform that matches these two, and beginners in health can get feedback on necessary information such as exercise and diet from the matched PT trainer, and the PT trainer provides feedback to users with less effort than members who do face-to-face.
 
 # Work
+Program Operation Features
+1. Users enter their body information and special information based on in-body information
+  1-1. Direct user input
+  1-2. Automatic input using OCR
+  1-3. Provides map function to locate in-body machines
+
+2. Trainers can view user information
+
+3. Start non-face-to-face PT with match between trainer and user
+  3-1. One-on-one with trainers
+  3-2. Send user diet information
+  3-3. Send user in-body results
+  3-4. Feedback from the trainer
+
+# Opensource & License
+Kakao Vision API(OCR) : https://vision-api.kakao.com/
+Kakao developers : https://developers.kakao.com/docs/latest/ko/vision/dev-guide#ocr
+KaKao map API : https://apis.map.kakao.com/
+A study on improvement of Korean OCR accuracy using deep learning : https://scienceon.kisti.re.kr/commons/util/originalView.do?dbt=CFKO&cn=CFKO201821464987120&oCn=NPAP12688214&pageCode=PG11&journal=NPRO00377584
+cnn image classification : https://www.tensorflow.org/tutorials/images/classification?hl=en
+cs231n Lesson 8 Localization, detection : https://www.youtube.com/watch?v=y1dBz6QPxBc&list=PL1Kb3QTCLIVtyOuMgyVgT-OeW0PYXl3j5&index=7
+Ten thousand recipes (food photos) : https://www.10000recipe.com/
 ![image](https://user-images.githubusercontent.com/27857543/172053129-430fab1a-7501-4141-bfd4-4c55ac1180f0.png)
 <img src="https://user-images.githubusercontent.com/27857543/172053402-b0c7b9bc-a5e2-41cd-8c33-39f7dcbd5e31.png" width="50%" height="50%"/>
 <img src="https://user-images.githubusercontent.com/27857543/172053430-464b3f22-ace8-48b0-98cc-92420cee088a.png" width="30%" height="30%"/>
