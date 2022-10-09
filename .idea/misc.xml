@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/baseline_chat_24.xml" value="0.103125" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_message.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_signup.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_start.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_upload.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/fragment_chat.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/fragment_food.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/fragment_people.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/item_chatroom.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/item_friend.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/item_message.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/menu/bottom_navigation_main.xml" value="0.1" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

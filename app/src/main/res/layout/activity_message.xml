@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".chat.MessageActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/messageActivity_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="670dp"></androidx.recyclerview.widget.RecyclerView>
+    <EditText
+        android:layout_toRightOf="@id/messageActivity_Button"
+        android:id="@+id/messageActivity_Edit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/messageActivity_Button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="전송"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
