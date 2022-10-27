@@ -1,4 +1,4 @@
-package com.example.healthcare;
+package com.example.healthcare.login;
 
 
 import androidx.annotation.NonNull;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.healthcare.R;
+import com.example.healthcare.StartActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -54,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,SignupActivity.class));
+                startActivity(new Intent(LoginActivity.this, SignupActivity.class));
             }
         });
         //로그인 리스너
@@ -64,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null){
                     //로그인
-                    Intent intent = new Intent(LoginActivity.this,StartActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, StartActivity.class);
                     if(intent!=null) {
                         startActivity(intent);
                         finish();
