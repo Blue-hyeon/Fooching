@@ -24,10 +24,10 @@
             android:name=".StartActivity"
             android:exported="true" />
         <activity
-            android:name=".SignupActivity"
+            android:name=".login.SignupActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".login.LoginActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"

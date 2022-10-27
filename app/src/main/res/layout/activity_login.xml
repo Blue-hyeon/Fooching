@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".LoginActivity">
+    tools:context=".login.LoginActivity">
     <ImageView
         android:src="@drawable/health_icon"
         android:layout_width="wrap_content"

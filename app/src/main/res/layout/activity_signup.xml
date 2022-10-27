@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".SignupActivity">
+    tools:context=".login.SignupActivity">
     <ImageView
         android:id="@+id/signupactivity_profile"
         android:src="@drawable/photo_image"

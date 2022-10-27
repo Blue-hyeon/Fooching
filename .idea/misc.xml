@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_message.xml" value="0.19655797101449277" />
+        <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_upload.xml" value="0.19655797101449277" />
+        <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/fragment_chat.xml" value="0.19655797101449277" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/baseline_chat_24.xml" value="0.103125" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_main.xml" value="0.1" />
