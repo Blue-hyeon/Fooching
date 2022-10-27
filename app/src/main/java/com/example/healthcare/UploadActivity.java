@@ -1,7 +1,14 @@
 package com.example.healthcare;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import android.Manifest;
 import android.app.AlertDialog;
@@ -24,22 +31,38 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.healthcare.model.UserModel;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.koushikdutta.ion.Ion;
 
 import java.io.File;
 import java.io.IOException;
 
-public class UploadActivity extends AppCompatActivity {
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+
+public class UploadActivity extends AppCompatActivity implements View.OnClickListener {
     private static final int IMG_REQUEST =  1;
+
+    private Retrofit retrofit;
+    private APIInterface service;
 
     //  Select image from gallery: ImageView
     ImageView imageToUpload;
 
     //  Image upload: Button
-    Button uploadBtn;
+    Button uploadBtn,btn_get;
 
     //  Variable to store gallery image path: String
-    String profileImgPath;
+    String profileImgPath,ImgPath;
 
     //  Converting gallery image to bitmap to set it to imageview
     Bitmap bitmap;
@@ -48,9 +71,8 @@ public class UploadActivity extends AppCompatActivity {
     private AlertDialog.Builder builder;
 
     //  SERVER URL
-    String UPLOAD_URL = "http://172.16.239.126:3000/api/image";
-
-
+    //String UPLOAD_URL = "http://172.30.1.20:3000/api/image";
+    String UPLOAD_URL = "http://192.168.1.4:3000/api/image/";
     @Override
     protected void onStart() {
         getPermissions();
@@ -65,6 +87,7 @@ public class UploadActivity extends AppCompatActivity {
         //      initialize vars
         initVars();
 
+        btn_get = (Button) findViewById(R.id.btn_get);
 //      image view on click listener
         imageToUpload.setOnClickListener(v -> {
             Intent intent = new Intent();
@@ -81,7 +104,9 @@ public class UploadActivity extends AppCompatActivity {
                 displayAlert("Please select a profile picture");
                 return;
             }
-            Log.e("4444444444", String.valueOf(profileImgPath));
+            Log.e("4444444444", String.valueOf(profileImgPath.lastIndexOf("/")+1));
+            ImgPath = profileImgPath.substring(profileImgPath.lastIndexOf("/")+1);
+            ImgPath=ImgPath.replace(".","");
             Ion.with(this)
                     .load(UPLOAD_URL)
                     .setMultipartFile("image", "image/jpeg", new File(profileImgPath))
@@ -90,10 +115,7 @@ public class UploadActivity extends AppCompatActivity {
                     .setCallback((e, result) -> {
                         Toast.makeText(this,profileImgPath,Toast.LENGTH_LONG).show();
 
-                        if(e != null) {
-                            Log.e("4444444444", String.valueOf(result));
-                            Log.e("134444444444",String.valueOf(e));
-                            Log.e("4444444444",String.valueOf(UPLOAD_URL));
+                        if(e != null) { ;
                             Toast.makeText(this, "Error is: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }else {
                             switch (result.getHeaders().code()) {
@@ -113,7 +135,38 @@ public class UploadActivity extends AppCompatActivity {
                     });
 
         });
+        btn_get.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.btn_get:
+                final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                Log.e("4444444444444",ImgPath);
+                FirebaseDatabase.getInstance().getReference().child("approved_users").child(ImgPath).child("name").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        String value = dataSnapshot.getValue(String.class);
+                        Log.e("4444444444444",value);
+                        Toast.makeText(UploadActivity.this,value,Toast.LENGTH_LONG).show();
+//                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
+//                            String name = ds.child("name").getValue(String.class);
+//                            Toast.makeText(UploadActivity.this,name,Toast.LENGTH_LONG).show();
+//                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                        //Log.e("MainActivity", String.valueOf(databaseError.toException())); // 에러문 출력
+                    }
+                });
+                break;
+            default:
+                break;
+        }
     }
 
     private void initVars() {
