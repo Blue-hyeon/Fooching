@@ -1,5 +1,6 @@
-package com.example.healthcare.fragment;
+package com.example.healthcare.chat;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -52,7 +54,13 @@ public class ChatFragment extends Fragment {
         RecyclerView recyclerView  = (RecyclerView) view.findViewById(R.id.chatfragment_recyclerview);
         recyclerView.setAdapter(new ChatRecyclerViewAdapter());
         recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext()));
+        Button button = (Button) view.findViewById(R.id.chatItem_exit_button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+            }
+        });
         return view;
     }
     class ChatRecyclerViewAdapter extends  RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -95,7 +103,7 @@ public class ChatFragment extends Fragment {
         }
         //형식에 맞추어 holding
         @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
             final CustomViewHolder customViewHolder = (CustomViewHolder)holder;
             String destinationUid = null;
 
@@ -126,27 +134,41 @@ public class ChatFragment extends Fragment {
             });
 
             //메시지를 내림 차순으로 정렬 후 마지막 메세지의 키값을 가져옴
-            Map<String,ChatModel.Comment> commentMap = new TreeMap<>(Collections.reverseOrder());
-            commentMap.putAll(chatModels.get(position).comments);
-            String lastMessageKey = (String) commentMap.keySet().toArray()[0];
-            customViewHolder.textView_last_message.setText(chatModels.get(position).comments.get(lastMessageKey).message);
-            customViewHolder.imageView.setOnClickListener(new View.OnClickListener() {
+//            Map<String,ChatModel.Comment> commentMap = new TreeMap<>(Collections.reverseOrder());
+//            commentMap.putAll(chatModels.get(position).comments);
+//            String lastMessageKey = (String) commentMap.keySet().toArray()[0];
+//            customViewHolder.textView_last_message.setText(chatModels.get(position).comments.get(lastMessageKey).message);
+//            customViewHolder.imageView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    Intent intent = new Intent(v.getContext(),MessageActivity.class);
+//                    intent.putExtra("destinationUid",destinationUsers.get(position));
+//                    ActivityOptions activityOptions = null;
+//                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+//                        activityOptions = ActivityOptions.makeCustomAnimation(v.getContext(), R.anim.fromright, R.anim.toleft);
+//                        startActivity(intent,activityOptions.toBundle());
+//                    }
+//                }
+//            });
+            //TimeStamp
+//            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+//            long unixTime = (long) chatModels.get(position).comments.get(lastMessageKey).timestamp;
+//            Date date = new Date(unixTime);
+//            customViewHolder.textView_timestamp.setText(simpleDateFormat.format(date));
+
+            //채팅방이동 이벤트
+            customViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(),MessageActivity.class);
+                public void onClick(View view) {
+                    Intent intent = new Intent(view.getContext(),MessageActivity.class);
                     intent.putExtra("destinationUid",destinationUsers.get(position));
                     ActivityOptions activityOptions = null;
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                        activityOptions = ActivityOptions.makeCustomAnimation(v.getContext(), R.anim.fromright, R.anim.toleft);
+                        activityOptions = ActivityOptions.makeCustomAnimation(view.getContext(), R.anim.fromright, R.anim.toleft);
                         startActivity(intent,activityOptions.toBundle());
                     }
                 }
             });
-            //TimeStamp
-            simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
-            long unixTime = (long) chatModels.get(position).comments.get(lastMessageKey).timestamp;
-            Date date = new Date(unixTime);
-            customViewHolder.textView_timestamp.setText(simpleDateFormat.format(date));
         }
 
         @Override

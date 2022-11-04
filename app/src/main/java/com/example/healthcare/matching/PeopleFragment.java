@@ -1,5 +1,6 @@
-package com.example.healthcare.fragment;
+package com.example.healthcare.matching;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -92,7 +93,7 @@ public class PeopleFragment extends Fragment {
         }
 
         @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
 
             Glide.with
@@ -104,11 +105,17 @@ public class PeopleFragment extends Fragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(v.getContext(),MessageActivity.class);
+                    Intent intent = new Intent(v.getContext(),MatchingActivity.class);
                     intent.putExtra("destinationUid",userModels.get(position).uid);
                     startActivity(intent);
+//                    Intent intent = new Intent(v.getContext(),MessageActivity.class);
+//                    intent.putExtra("destinationUid",userModels.get(position).uid);
+//                    startActivity(intent);
                 }
             });
+            if(userModels.get(position).comment !=null){
+                ((CustomViewHolder) holder).textView_comment.setText(userModels.get(position).comment);
+            }
 
         }
 
@@ -120,11 +127,12 @@ public class PeopleFragment extends Fragment {
         private class CustomViewHolder extends RecyclerView.ViewHolder {
             public ImageView imageView;
             public TextView textView;
-
+            public TextView textView_comment;
             public CustomViewHolder(View view) {
                 super(view);
                 imageView = (ImageView) view.findViewById(R.id.frienditem_imageview);
                 textView = (TextView) view.findViewById(R.id.frienditem_textview);
+                textView_comment = (TextView) view.findViewById(R.id.frienditem_state_comment);
             }
         }
     }
