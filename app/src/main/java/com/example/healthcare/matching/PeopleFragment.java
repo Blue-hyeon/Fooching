@@ -105,6 +105,7 @@ public class PeopleFragment extends Fragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    // MatchingAtivity 이동
                     Intent intent = new Intent(v.getContext(),MatchingActivity.class);
                     intent.putExtra("destinationUid",userModels.get(position).uid);
                     startActivity(intent);

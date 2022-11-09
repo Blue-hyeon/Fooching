@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.healthcare.MainActivity;
 import com.example.healthcare.R;
@@ -50,9 +51,12 @@ public class MatchingActivity extends AppCompatActivity {
 
                         }
                     });
+                }else{
+                    Toast.makeText(getApplicationContext(),"이미 매칭이 된 상태입니다.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+        checkChatRoom();
     }
     void checkChatRoom() {
 
