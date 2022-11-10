@@ -32,7 +32,7 @@ public class StartActivity extends AppCompatActivity {
                     case R.id.action_chat:
                         getSupportFragmentManager().beginTransaction().replace(R.id.startactivity_framelayout,new ChatFragment()).commit();
                         return true;
-                    case R.id.action_food:
+                    case R.id.action_My:
                         getSupportFragmentManager().beginTransaction().replace(R.id.startactivity_framelayout,new FoodFragment()).commit();
                         return true;
                 }

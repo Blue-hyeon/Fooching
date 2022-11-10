@@ -8,11 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.healthcare.MainActivity;
 import com.example.healthcare.R;
 import com.example.healthcare.chat.MessageActivity;
+import com.example.healthcare.fragment.FoodFragment;
 import com.example.healthcare.login.LoginActivity;
 import com.example.healthcare.model.ChatModel;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,25 +30,25 @@ public class MatchingActivity extends AppCompatActivity {
     private EditText editText;
     private String uid;
     private String chatRoomUid;
+    TextView textbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_matching);
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         destinationUid = getIntent().getStringExtra("destinationUid");
-        button = (Button) findViewById(R.id.matchingBtn);
-        button.setOnClickListener(new View.OnClickListener() {
+        textbutton = (TextView) findViewById(R.id.matchingBtn);
+        textbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 ChatModel chatModel = new ChatModel();
                 chatModel.users.put(uid, true);
                 chatModel.users.put(destinationUid, true);
                 if (chatRoomUid == null) {
-                    button.setEnabled(false);
+                    textbutton.setEnabled(false);
                     FirebaseDatabase.getInstance().getReference().child("chatrooms").push().setValue(chatModel).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-
                             checkChatRoom();
 
                         }
@@ -80,7 +82,7 @@ public class MatchingActivity extends AppCompatActivity {
                     ChatModel chatModel = item.getValue(ChatModel.class);
                     if (chatModel.users.containsKey(destinationUid) && chatModel.users.size() == 2) {
                         chatRoomUid = item.getKey();
-                        button.setEnabled(true);
+                        textbutton.setEnabled(true);
                     }
                 }
             }
