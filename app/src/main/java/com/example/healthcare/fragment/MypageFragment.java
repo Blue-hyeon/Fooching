@@ -3,14 +3,11 @@ package com.example.healthcare.fragment;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,7 +16,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.healthcare.R;
-import com.example.healthcare.UploadActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -29,13 +25,13 @@ import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FoodFragment} factory method to
+ * Use the {@link MypageFragment} factory method to
  * create an instance of this fragment.
  */
-public class FoodFragment extends Fragment {
+public class MypageFragment extends Fragment {
     FloatingActionButton floatingActionButton;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_food,container,false);
+        View view=inflater.inflate(R.layout.fragment_mypage,container,false);
         Button button = (Button) view.findViewById(R.id.state_message_button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override

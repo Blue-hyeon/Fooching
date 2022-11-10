@@ -1,9 +1,7 @@
 package com.example.healthcare.matching;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,11 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.healthcare.MainActivity;
 import com.example.healthcare.R;
-import com.example.healthcare.chat.MessageActivity;
-import com.example.healthcare.fragment.FoodFragment;
-import com.example.healthcare.login.LoginActivity;
 import com.example.healthcare.model.ChatModel;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
