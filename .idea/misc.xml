@@ -3,9 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/baseline_add_to_photos_24.xml" value="0.11458333333333333" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/baseline_chat_24.xml" value="0.103125" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/circle.xml" value="0.10416666666666667" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/manage_accounts-48px.xml" value="0.11458333333333333" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/manage_accounts.xml" value="0.10416666666666667" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/rectangle_corner.xml" value="0.10416666666666667" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_addfitness.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_matching.xml" value="0.10572916666666667" />
@@ -18,6 +22,7 @@
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/fragment_chat.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/fragment_food.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/fragment_home.xml" value="0.10677083333333333" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/fragment_mypage.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/fragment_people.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/item_chatroom.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/item_friend.xml" value="0.1" />
