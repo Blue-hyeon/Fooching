@@ -2,13 +2,14 @@ package com.example.healthcare;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
+
 import android.os.Bundle;
 import android.view.MenuItem;
 
-import com.example.healthcare.fragment.ChatFragment;
+import com.example.healthcare.chat.ChatFragment;
 import com.example.healthcare.fragment.FoodFragment;
-import com.example.healthcare.fragment.PeopleFragment;
+import com.example.healthcare.home.HomeFragment;
+import com.example.healthcare.matching.PeopleFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class StartActivity extends AppCompatActivity {
@@ -22,6 +23,9 @@ public class StartActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
+                    case R.id.action_home:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.startactivity_framelayout,new HomeFragment()).commit();
+                        return true;
                     case R.id.action_people:
                         getSupportFragmentManager().beginTransaction().replace(R.id.startactivity_framelayout,new PeopleFragment()).commit();
                         return true;

@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Healthcare"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".SettingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".matching.MatchingActivity"
+            android:exported="true" />
+        <activity
             android:name=".UploadActivity"
             android:exported="true" />
         <activity
