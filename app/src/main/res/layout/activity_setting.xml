@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="     "
+        android:textSize="30sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/arrow_back"/>
+        <TextView
+            android:id="@+id/set"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_weight="20"
+            android:text="설정          "
+            android:textColor ="#00A98B"
+            android:textSize="30sp"/>
+
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="     "
+        android:textSize="30sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id = "@+id/notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|right"
+            android:background="#ffffff"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="공지사항"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id = "@+id/notice_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:textColor="#00A98B"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="          >"
+            />
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="     "
+        android:textSize="30sp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id = "@+id/bug"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|right"
+            android:background="#ffffff"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="      버그 리포트"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id = "@+id/bug_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:textColor="#00A98B"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="       >"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="     "
+        android:textSize="30sp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id = "@+id/security"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|right"
+            android:background="#ffffff"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="    개인/ 보안"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id = "@+id/security_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:textColor="#00A98B"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="         >"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="     "
+        android:textSize="30sp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id = "@+id/withdraw"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center|right"
+            android:background="#ffffff"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="회원탈퇴"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id = "@+id/withdraw_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#ffffff"
+            android:textColor="#00A98B"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:text="          >"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

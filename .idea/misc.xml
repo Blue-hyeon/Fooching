@@ -4,10 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/baseline_chat_24.xml" value="0.103125" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/circle.xml" value="0.10416666666666667" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/rectangle_corner.xml" value="0.10416666666666667" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_matching.xml" value="0.10572916666666667" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_message.xml" value="0.1" />
+        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_setting.xml" value="0.264" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_signup.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_start.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_upload.xml" value="0.1" />

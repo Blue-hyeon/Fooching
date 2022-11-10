@@ -34,7 +34,7 @@ public class MatchingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_matching);
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         destinationUid = getIntent().getStringExtra("destinationUid");
-        button = (Button) findViewById(R.id.matching_button);
+        button = (Button) findViewById(R.id.matchingBtn);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

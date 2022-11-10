@@ -1,15 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".matching.MatchingActivity">
+
     <Button
-        android:id="@+id/matching_button"
-        android:layout_margin="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/backBtn"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:backgroundTint="@color/teal_700"
+        android:text="back"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="54dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/matchingBtn"
+        android:layout_width="344dp"
+        android:layout_height="47dp"
+        android:backgroundTint="@color/teal_700"
         android:text="매칭하기"
-        />
-</LinearLayout>
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="593dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="122dp"
+        android:layout_height="44dp"
+        android:text="트레이너"
+        android:textColor="@color/teal_700"
+        tools:layout_editor_absoluteX="107dp"
+        tools:layout_editor_absoluteY="55dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/trainerintroduce"
+        android:layout_width="343dp"
+        android:layout_height="190dp"
+        app:srcCompat="@drawable/rectangle_corner"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="123dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/healthClub"
+        android:layout_width="167dp"
+        android:layout_height="32dp"
+        android:background="#00FFFFFF"
+        android:text="헬스장"
+        android:textColor="@color/teal_200"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="202dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/sex"
+        android:layout_width="66dp"
+        android:layout_height="32dp"
+        android:background="#00FFFFFF"
+        android:text="성별"
+        tools:layout_editor_absoluteX="241dp"
+        tools:layout_editor_absoluteY="249dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="66dp"
+        android:layout_height="32dp"
+        android:background="#00FFFFFF"
+        android:text="나이"
+        tools:layout_editor_absoluteX="196dp"
+        tools:layout_editor_absoluteY="249dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="66dp"
+        android:layout_height="32dp"
+        android:background="#00FFFFFF"
+        android:text="주소지"
+        tools:layout_editor_absoluteX="295dp"
+        tools:layout_editor_absoluteY="249dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/introducename"
+        android:layout_width="167dp"
+        android:layout_height="32dp"
+        android:background="#00FFFFFF"
+        android:text="XXX 트레이너"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="158dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/prize"
+        android:layout_width="167dp"
+        android:layout_height="32dp"
+        android:background="#00FFFFFF"
+        android:text="수상 경력"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="510dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/license"
+        android:layout_width="167dp"
+        android:layout_height="32dp"
+        android:background="#00FFFFFF"
+        android:text="자격증"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="435dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/introduce"
+        android:layout_width="167dp"
+        android:layout_height="32dp"
+        android:background="#00FFFFFF"
+        android:text="자기소개"
+        tools:layout_editor_absoluteX="33dp"
+        tools:layout_editor_absoluteY="358dp"
+        tools:ignore="MissingConstraints" />
+
+    <ImageView
+        android:id="@+id/selfie"
+        android:layout_width="126dp"
+        android:layout_height="123dp"
+        app:srcCompat="@drawable/circle"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="158dp"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

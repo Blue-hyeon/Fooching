@@ -18,5 +18,10 @@
         android:layout_marginBottom="20dp"
         android:src="@android:drawable/stat_notify_chat"
         />
-
+    <Button
+        android:id="@+id/setting_button"
+        android:text="설정"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
 </LinearLayout>
