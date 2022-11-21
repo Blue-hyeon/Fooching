@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.healthcare.chat.ChatFragment;
-import com.example.healthcare.fragment.FoodFragment;
+import com.example.healthcare.fragment.MypageFragment;
 import com.example.healthcare.home.HomeFragment;
 import com.example.healthcare.matching.PeopleFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -33,7 +33,7 @@ public class StartActivity extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.startactivity_framelayout,new ChatFragment()).commit();
                         return true;
                     case R.id.action_My:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.startactivity_framelayout,new FoodFragment()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.startactivity_framelayout,new MypageFragment()).commit();
                         return true;
                 }
                 return false;

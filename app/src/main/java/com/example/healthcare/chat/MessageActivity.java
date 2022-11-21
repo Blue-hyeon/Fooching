@@ -2,6 +2,8 @@ package com.example.healthcare.chat;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +15,7 @@ import com.example.healthcare.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -20,10 +23,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -35,10 +42,12 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.TimeZone;
 
-public class MessageActivity extends AppCompatActivity {
+public class MessageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private String destinationUid;
     private Button button;
     private EditText editText;
@@ -56,6 +65,9 @@ public class MessageActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.messageActivity_Button);
         editText = (EditText) findViewById(R.id.messageActivity_Edit);
         recyclerView = (RecyclerView) findViewById(R.id.messageActivity_recyclerview);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+
+        navigationView.setNavigationItemSelectedListener(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -213,6 +225,49 @@ public class MessageActivity extends AppCompatActivity {
             }
 
         }
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_chat_toolbar,menu);
+
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch(item.getItemId())
+        {
+            case R.id.toolbar_menu:
+                Log.e("1111111111111","toolbar_menu");
+                DrawerLayout drawer = findViewById(R.id.chat_drawer);
+                drawer.openDrawer(GravityCompat.END);
+                break;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    public boolean onNavigationItemSelected(MenuItem item){
+        int id = item.getItemId();
+        switch (id){
+            case R.id.drawer_exit:
+                Log.e("1111111111111","drawer_exit");
+                exitproject();
+                //break;
+        }
+
+//        DrawerLayout drawer = findViewById(R.id.chat_drawer);
+//        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    private void exitproject(){
+        Map<String, Object> usersMap = new HashMap<>();
+        FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).removeValue();
+        //startActivity(new Intent(v.getContext(), ChatFragment2.class));
+        //getSupportFragmentManager().beginTransaction().replace(R.id.startactivity_framelayout,new ChatFragment()).commit();
+        finish();
+
     }
     @Override
     public void onBackPressed() {
