@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.healthcare.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,6 +42,8 @@ public class SignupActivity extends AppCompatActivity {
     private FirebaseRemoteConfig mFirebaseRemoteConfig;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference();
+    private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,7 @@ public class SignupActivity extends AppCompatActivity {
         if(Build.VERSION.SDK_INT>=Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(Color.parseColor(loading_background));
         }
+        firebaseAuth = FirebaseAuth.getInstance();
         email=(EditText) findViewById(R.id.signupactivity_email);
         name=(EditText) findViewById(R.id.signupactivity_name);
         password=(EditText) findViewById(R.id.signupactivity_password);
@@ -76,6 +80,17 @@ public class SignupActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 final String uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                firebaseAuth.getCurrentUser().sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            Toast.makeText(SignupActivity.this,"Check your email",Toast.LENGTH_LONG).show();
+                                        }
+                                        else{
+                                            Toast.makeText(SignupActivity.this,task.getException().getMessage(),Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+                                });
                                 FirebaseStorage.getInstance().getReference().child("profileImage").child(uid).putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                                     @Override
                                     public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {

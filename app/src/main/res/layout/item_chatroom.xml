@@ -34,13 +34,14 @@
             android:id="@+id/chatItem_textview_timestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
+
         <Button
-            android:text="운동설정하기"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentBottom="true"
-            android:textSize="6dp"
             android:id="@+id/chatItem_exit_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="운동설정하기"
+            android:textSize="6dp" />
     </RelativeLayout>
 </LinearLayout>
