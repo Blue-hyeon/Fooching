@@ -1,4 +1,4 @@
-package com.example.healthcare.fragment;
+package com.example.healthcare.home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,31 +6,39 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.example.healthcare.R;
+import com.example.healthcare.SettingActivity;
 import com.example.healthcare.UploadActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link FoodFragment} factory method to
+ * Use the {@link HomeFragment} factory method to
  * create an instance of this fragment.
  */
-public class FoodFragment extends Fragment {
+public class HomeFragment extends Fragment {
     FloatingActionButton floatingActionButton;
+    Button button;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_food,container,false);
-        floatingActionButton = (FloatingActionButton)view.findViewById(R.id.foodfragment_floatingButton);
+        View view=inflater.inflate(R.layout.fragment_home,container,false);
+        floatingActionButton = (FloatingActionButton)view.findViewById(R.id.homefragment_floatingButton);
+        button = (Button)view.findViewById(R.id.setting_button);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(view.getContext(), UploadActivity.class));
+            }
+        });
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(view.getContext(), SettingActivity.class));
             }
         });
         return view;

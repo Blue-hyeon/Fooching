@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/baseline_home_black_24"
+        android:title="Home"/>
+    <item
         android:id="@+id/action_people"
         android:icon="@drawable/baseline_groups_black_24"
         android:title="People"/>
@@ -9,7 +13,7 @@
         android:icon="@drawable/baseline_chat_black_24"
         android:title="Chat"/>
     <item
-        android:id="@+id/action_food"
-        android:icon="@drawable/baseline_food_bank_black_24"
-        android:title="Food"/>
+        android:id="@+id/action_My"
+        android:icon="@drawable/manage_accounts"
+        android:title="My"/>
 </menu>

@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/backBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/maingreen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="20dp"/>
+
+    <TextView
+        android:id="@+id/matcing_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="트레이너"
+        android:textSize="24dp"
+        android:textStyle="bold"
+        android:textColor="@color/maingreen"
+        android:layout_marginStart="10dp"
+        app:layout_constraintTop_toTopOf="@id/backBtn"
+        app:layout_constraintLeft_toRightOf="@id/backBtn"
+        app:layout_constraintBottom_toBottomOf="@id/backBtn"/>
+
+
+    <TextView
+        android:id="@+id/matchingBtn"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:elevation="15dp"
+        android:background="@drawable/background_button"
+        android:text="매칭하기"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="30dp"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/matching_cv"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:backgroundTint="@color/boxlightgray"
+        android:elevation="15dp"
+        app:cardCornerRadius="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/matcing_title_tv">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/matching_cv_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/circle"
+            android:layout_marginStart="30dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/matching_cv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ㅇㅇㅇ 트레이너"
+                android:textColor="@color/text"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                app:layout_constraintTop_toTopOf="@id/matching_cv_profile"
+                app:layout_constraintStart_toEndOf="@id/matching_cv_profile"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <TextView
+                android:id="@+id/matching_cv_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="애플짐 휘트니스 복정점"
+                android:textColor="@color/maingreen"
+                android:textSize="15dp"
+                app:layout_constraintTop_toTopOf="@id/matching_cv_name"
+                app:layout_constraintStart_toEndOf="@id/matching_cv_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/matching_cv_info"/>
+
+            <TextView
+                android:id="@+id/matching_cv_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="27세 | 남 | 서울 마포구"
+                android:textColor="@color/text"
+                android:textSize="15dp"
+                app:layout_constraintStart_toEndOf="@id/matching_cv_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/matching_cv_profile"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/license_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자격증"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/text"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/introduce_content_tv"
+        app:layout_constraintStart_toStartOf="@id/backBtn" />
+
+    <TextView
+        android:id="@+id/license_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="자격증 땄다"
+        android:textSize="12dp"
+        android:textStyle="bold"
+        android:textColor="@color/text"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@id/license_tv"
+        app:layout_constraintStart_toStartOf="@id/backBtn" />
+
+    <TextView
+        android:id="@+id/introduce_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="자기소개"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/text"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/matching_cv"
+        app:layout_constraintStart_toStartOf="@id/backBtn"/>
+
+    <TextView
+        android:id="@+id/introduce_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="자기소개ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        android:textSize="12dp"
+        android:textColor="@color/text"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@id/introduce_tv"
+        app:layout_constraintStart_toStartOf="@id/backBtn"/>
+
+    <TextView
+        android:id="@+id/prize_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="수상 경력"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        android:textColor="@color/text"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/license_content_tv"
+        app:layout_constraintStart_toStartOf="@id/backBtn" />
+
+    <TextView
+        android:id="@+id/prize_content_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="수상 경력 dd 1등"
+        android:textSize="12dp"
+        android:textColor="@color/text"
+        android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
+        app:layout_constraintTop_toBottomOf="@id/prize_tv"
+        app:layout_constraintStart_toStartOf="@id/backBtn"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

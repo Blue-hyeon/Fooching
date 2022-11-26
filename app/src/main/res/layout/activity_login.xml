@@ -6,26 +6,33 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".login.LoginActivity">
-    <ImageView
-        android:src="@drawable/health_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    tools:context=".login.LoginActivity"
+    android:background="@drawable/loginpage">
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="50mm"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/boxlightgray"
+        app:boxStrokeColor="@color/teal_700"
+        app:hintTextColor="@color/maingreen"
+        android:layout_marginTop="200dp"
+        >
         <EditText
             android:id="@+id/loginactivity_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="id">
+            android:hint="ID">
         </EditText>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_width="50mm"
+        android:layout_height="wrap_content"
+        app:boxBackgroundColor="@color/boxlightgray"
+        app:boxStrokeColor="@color/teal_700"
+        app:hintTextColor="@color/maingreen"
+
+        >
         <EditText
             android:id="@+id/loginactivity_password"
             android:layout_width="match_parent"
@@ -34,16 +41,27 @@
             android:hint="password">
         </EditText>
     </com.google.android.material.textfield.TextInputLayout>
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginactivity_signin_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="로그인"/>
-    <Button
+        android:background="@color/maingreen"
+        android:layout_marginTop="30dp"
+        android:text="로그인"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/loginactivity_signup_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="회원가입"/>
+        android:layout_margin="10dp"
+        android:background="@color/maingreen"
+        android:text="회원가입"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
 </LinearLayout>

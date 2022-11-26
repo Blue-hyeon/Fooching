@@ -5,4 +5,5 @@ public class UserModel {
     public String profileImageUrl;
     public String uid;
     public String level;
+    public String comment;
 }
