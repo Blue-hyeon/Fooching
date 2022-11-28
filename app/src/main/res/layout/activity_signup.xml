@@ -7,70 +7,88 @@
     android:orientation="vertical"
     android:gravity="center"
     tools:context=".login.SignupActivity">
+    <TextView
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/teal_700"
+        />
     <ImageView
         android:id="@+id/signupactivity_profile"
         android:src="@drawable/photo_image"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:text="+ 프로필 사진을 추가하세요"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:layout_marginTop="-35dp"
+        android:textColor="@color/text"
+        />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/signupactivity_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="email">
-        </EditText>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/signupactivity_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="name">
-        </EditText>
-    </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/signupactivity_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:hint="password">
-        </EditText>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/signupactivity_weight"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="weight">
-        </EditText>
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <EditText
-            android:id="@+id/signupactivity_height"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="height">
-        </EditText>
-    </com.google.android.material.textfield.TextInputLayout>
+    <EditText
+        android:id="@+id/signupactivity_email"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="email"
+        android:backgroundTint="@color/teal_700"
+        >
+    </EditText>
 
-    <Button
+    <EditText
+        android:id="@+id/signupactivity_name"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="name"
+        android:backgroundTint="@color/teal_700"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/signupactivity_password"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginTop="10dp"
+        android:hint="password"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+
+    <EditText
+        android:id="@+id/signupactivity_weight"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="weight"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+    <EditText
+        android:id="@+id/signupactivity_height"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="height"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signupactivity_signup_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="회원가입"/>
+        android:layout_marginTop="15dp"
+        android:text="가입하기"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="@color/teal_700"/>
 </LinearLayout>
