@@ -41,25 +41,25 @@
             android:hint="password">
         </EditText>
     </com.google.android.material.textfield.TextInputLayout>
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/loginactivity_signin_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@color/maingreen"
+        android:backgroundTint = "@color/maingreen"
         android:layout_marginTop="30dp"
         android:text="로그인"
         android:textColor="@color/white"
         android:textStyle="bold"
         />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/loginactivity_signup_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
-        android:background="@color/maingreen"
+        android:backgroundTint="@color/maingreen"
         android:text="회원가입"
         android:textColor="@color/white"
         android:textStyle="bold"
