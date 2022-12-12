@@ -8,24 +8,15 @@
     tools:context=".fragment.MypageFragment"
     android:orientation="vertical">
 
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="     "
-       android:textSize="30sp"
-       />
+
    <TextView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
+       android:layout_marginTop="40dp"
        android:text="      마이 페이지"
        android:textSize="30sp"
-       android:textColor="#00A98B"/>
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="     "
-       android:textSize="30sp"
-       />
+       android:textColor="#00A98B"
+       android:textStyle="bold"/>
 
    <androidx.cardview.widget.CardView
        android:id="@+id/my"
@@ -33,7 +24,8 @@
        android:layout_height="100dp"
        android:layout_gravity="center"
        my:cardCornerRadius="10dp"
-       card_view:cardBackgroundColor="#E2E2E2"
+       card_view:cardBackgroundColor="@color/boxlightgray"
+       android:layout_marginTop="40dp"
        >
 
       <ImageView
@@ -46,49 +38,40 @@
           android:layout_gravity="center|right"
           android:text="내 정보"/>
    </androidx.cardview.widget.CardView>
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="     "
-       android:textSize="30sp"
-       />
+
    <TextView
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
+       android:layout_marginTop="40dp"
        android:text="      나의 데이터 보러가기"
        android:textSize="20sp"/>
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="     "
-       android:textSize="30sp"
-       />
+
    <androidx.appcompat.widget.LinearLayoutCompat
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:orientation="horizontal"
-       android:weightSum = "3">
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="     "
-          android:layout_weight="1"
-          android:textSize="30sp"
-          />
+       android:weightSum = "2"
+       android:layout_marginTop="30dp">
+
 
       <androidx.cardview.widget.CardView
           android:id="@+id/Inbody_upload"
           android:layout_width="150dp"
           android:layout_height="150dp"
+          android:layout_marginLeft="30dp"
+          android:layout_marginRight="20dp"
           my:cardCornerRadius="10dp"
-          card_view:cardBackgroundColor="#E2E2E2"
-          android:layout_weight="5"
+          card_view:cardBackgroundColor="@color/boxlightgray"
+          android:layout_weight="1"
           >
 
          <ImageView
-             android:layout_width="55dp"
-             android:layout_height="47dp"
-             android:layout_gravity="center" />
+             android:id="@+id/uploadOCR"
+             android:layout_width="150dp"
+             android:layout_height="150dp"
+             android:layout_gravity="center"
+             android:layout_marginTop="-20dp"
+             android:src="@drawable/inbodywrite"/>
          <TextView
              android:id="@+id/trainnerInfo"
              android:layout_width="wrap_content"
@@ -97,26 +80,24 @@
              android:gravity="center_horizontal"
              android:text="인바디\n등록하기"/>
       </androidx.cardview.widget.CardView>
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="     "
-          android:layout_weight="1"
-          android:textSize="30sp"
-          />
       <androidx.cardview.widget.CardView
           android:id="@+id/findWhere"
           android:layout_width="150dp"
           android:layout_height="150dp"
+          android:layout_marginLeft="20dp"
+          android:layout_marginRight="30dp"
           my:cardCornerRadius="10dp"
-          card_view:cardBackgroundColor="#E2E2E2"
+          card_view:cardBackgroundColor="@color/boxlightgray"
           android:layout_weight="1"
           >
 
          <ImageView
-             android:layout_width="55dp"
-             android:layout_height="47dp"
-             android:layout_gravity="center" />
+             android:layout_width="350dp"
+             android:layout_height="350dp"
+             android:layout_gravity="center"
+             android:layout_marginTop="-20dp"
+             android:layout_marginLeft="10dp"
+             android:src="@drawable/inbodymap"/>
          <TextView
              android:id="@+id/findPlace"
              android:layout_width="wrap_content"
@@ -125,42 +106,24 @@
              android:gravity="center_horizontal"
              android:text="인바디\n재러가기"/>
       </androidx.cardview.widget.CardView>
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="     "
-          android:layout_weight="1"
-          android:textSize="30sp"
-          />
    </androidx.appcompat.widget.LinearLayoutCompat>
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="     "
-       android:textSize="30sp"
-       />
 
    <androidx.appcompat.widget.AppCompatButton
        android:id="@+id/state_message_button"
        android:layout_width="134dp"
        android:layout_height="wrap_content"
        android:layout_gravity="center"
+       android:layout_marginTop="30dp"
        android:background="#00A98B"
        android:text="상태메세지 등록"
-       android:textColor="#ffffff" />
-
-   <TextView
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:text="     "
-       android:textSize="30sp"
-       />
+       android:textColor="#ffffff"/>
 
    <View
        android:layout_width="365dp"
        android:layout_height="2dp"
-       android:background="#000000"
-       android:layout_gravity="center"/>
+       android:background="@color/textgray"
+       android:layout_gravity="center"
+       android:layout_marginTop="30dp"/>
 
 
 </LinearLayout>

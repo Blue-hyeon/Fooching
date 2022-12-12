@@ -15,6 +15,13 @@
         android:theme="@style/Theme.Healthcare"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".UploadOcrActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".AddfitnessActivity"
             android:exported="true" />
         <activity

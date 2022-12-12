@@ -5,23 +5,25 @@
       <map>
         <entry key="..\:/Fooching/Fooching/app/src/main/res/drawable/background_button.xml" value="0.1765" />
         <entry key="..\:/Fooching/Fooching/app/src/main/res/drawable/circle.xml" value="0.1765" />
+        <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_addfitness.xml" value="0.24947916666666667" />
+        <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_login.xml" value="0.13903985507246377" />
         <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_main.xml" value="0.19655797101449277" />
         <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_matching.xml" value="0.264" />
         <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_message.xml" value="0.19655797101449277" />
         <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_setting.xml" value="0.264" />
+        <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_signup.xml" value="0.24947916666666667" />
+        <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_start.xml" value="0.24947916666666667" />
         <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/activity_upload.xml" value="0.19655797101449277" />
         <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/dialog_comment.xml" value="0.19655797101449277" />
         <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/fragment_chat.xml" value="0.19655797101449277" />
         <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/fragment_food.xml" value="0.109375" />
-        <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/fragment_home.xml" value="0.19655797101449277" />
+        <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/fragment_home.xml" value="0.2" />
+        <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/fragment_mypage.xml" value="0.24947916666666667" />
         <entry key="..\:/Fooching/Fooching/app/src/main/res/layout/fragment_people.xml" value="0.109375" />
-        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable-hdpi/ic_exit.xml" value="0.11458333333333333" />
-        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable-hdpi/ic_menu_black.xml" value="0.11458333333333333" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/drawable/baseline_chat_24.xml" value="0.103125" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_message.xml" value="0.1" />
-        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_setting.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_signup.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_start.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/activity_upload.xml" value="0.1" />
@@ -32,8 +34,6 @@
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/item_friend.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/layout/item_message.xml" value="0.1" />
         <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/menu/bottom_navigation_main.xml" value="0.1" />
-        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/menu/menu_chat_toolbar.xml" value="0.1" />
-        <entry key="..\:/Users/tmdtj/AndroidStudioProjects/healthcare/app/src/main/res/menu/menu_drawer.xml" value="0.1" />
       </map>
     </option>
   </component>
