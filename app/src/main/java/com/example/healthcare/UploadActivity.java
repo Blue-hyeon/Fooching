@@ -69,10 +69,11 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
     //  Alert box
     private AlertDialog.Builder builder;
-
+    String path="http://";
     //  SERVER URL
     //String UPLOAD_URL = "http://172.30.1.20:3000/api/image";
-    String UPLOAD_URL = "http://192.168.1.4:3000/api/image/";
+    //String UPLOAD_URL = path+"/api/image";
+    String UPLOAD_URL = path+"/ocr/image";
     @Override
     protected void onStart() {
         getPermissions();
