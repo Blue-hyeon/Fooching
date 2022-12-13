@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp">
+    <ImageView
+        android:layout_margin="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/chatItem_imageview"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/chatItem_textview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="Chatroom" />
+        <TextView
+            android:id="@+id/chatItem_textview_lastMessage"
+            android:text="마지막 메세지"
+            android:layout_below="@+id/chatItem_textview_title"
+            android:layout_marginTop="10dp"
+            android:textColor="@android:color/darker_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <TextView
+            android:text="2011.11.11 11:11"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:textSize="10dp"
+            android:textColor="@android:color/darker_gray"
+            android:id="@+id/chatItem_textview_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/chatItem_exit_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:text="운동설정하기"
+            android:textSize="6dp" />
+    </RelativeLayout>
+</LinearLayout>
