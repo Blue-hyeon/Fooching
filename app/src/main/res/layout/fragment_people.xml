@@ -3,14 +3,74 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".matching.PeopleFragment">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/peoplefragment_recyclerview"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_matching_cl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    </androidx.recyclerview.widget.RecyclerView>
+        <TextView
+            android:id="@+id/matching_title_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="매칭"
+            android:textColor="@color/maingreen"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ImageView
+            android:id="@+id/matching_search_v"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:src="@drawable/rectangle_corner"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@id/matching_title_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageView
+            android:id="@+id/search_icon_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/search"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toTopOf="@id/matching_search_v"
+            app:layout_constraintStart_toStartOf="@id/matching_search_v"
+            app:layout_constraintBottom_toBottomOf="@id/matching_search_v"/>
+
+        <EditText
+            android:id="@+id/matching_search_et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="검색하실 키워드를 넣어주세요"
+            android:background="@color/transparent"
+            android:textColorHint="@color/text"
+            android:textSize="15sp"
+            android:layout_marginStart="10dp"
+            app:layout_constraintTop_toTopOf="@id/matching_search_v"
+            app:layout_constraintStart_toEndOf="@id/search_icon_iv"
+            app:layout_constraintBottom_toBottomOf="@id/matching_search_v"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/peoplefragment_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="20dp"
+            android:overScrollMode="never"
+            android:orientation="vertical"
+            tools:listitem="@layout/item_friend"
+            app:layout_constraintTop_toBottomOf="@id/matching_search_v"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>

@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home,container,false);
         floatingActionButton = (FloatingActionButton)view.findViewById(R.id.homefragment_floatingButton);
-        button = (ImageButton) view.findViewById(R.id.setting_button);
+        button = (ImageButton)view.findViewById(R.id.setting_button);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

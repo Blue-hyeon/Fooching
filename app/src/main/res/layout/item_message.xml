@@ -26,7 +26,8 @@
         <TextView
             android:id="@+id/messageitem_textview"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:maxWidth="200dp"/>
         <TextView
             android:text="2011.11.11 11:11"
             android:textSize="9dp"
