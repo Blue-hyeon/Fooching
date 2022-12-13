@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.example.healthcare.R;
 import com.example.healthcare.SettingActivity;
@@ -24,11 +25,11 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
  */
 public class HomeFragment extends Fragment {
     FloatingActionButton floatingActionButton;
-    Button button;
+    ImageButton button;
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_home,container,false);
         floatingActionButton = (FloatingActionButton)view.findViewById(R.id.homefragment_floatingButton);
-        button = (Button)view.findViewById(R.id.setting_button);
+        button = (ImageButton)view.findViewById(R.id.setting_button);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
