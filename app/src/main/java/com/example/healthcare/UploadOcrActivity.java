@@ -26,6 +26,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.healthcare.model.OCRModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -44,6 +45,14 @@ public class UploadOcrActivity extends AppCompatActivity implements View.OnClick
     private Retrofit retrofit;
     private APIInterface service;
 
+    private String BMI;
+    private String muscle;
+    private String basal_metabolic;
+    private String protein;
+    private String kidney;
+    private String weight;
+    private String body_water;
+    private String body_fat;
     //  Select image from gallery: ImageView
     ImageView imageToUpload;
 
@@ -61,7 +70,7 @@ public class UploadOcrActivity extends AppCompatActivity implements View.OnClick
 
     //  SERVER URL
     //String UPLOAD_URL = "http://172.30.1.20:3000/api/image";
-    String UPLOAD_URL = "http://192.168.2.116:3000/ocr/image/";
+    String UPLOAD_URL = "http://192.168.1.4:3000/ocr/image/";
     @Override
     protected void onStart() {
         getPermissions();
@@ -91,7 +100,7 @@ public class UploadOcrActivity extends AppCompatActivity implements View.OnClick
                 displayAlert("Please select a profile picture");
                 return;
             }
-            Log.e("4444444444", String.valueOf(profileImgPath.lastIndexOf("/")+1));
+            Log.e("3333333", String.valueOf(profileImgPath.lastIndexOf("/")+1));
             ImgPath = profileImgPath.substring(profileImgPath.lastIndexOf("/")+1);
             ImgPath=ImgPath.replace(".","");
             Ion.with(this)
@@ -132,12 +141,23 @@ public class UploadOcrActivity extends AppCompatActivity implements View.OnClick
             case R.id.btn_get:
                 final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 Log.e("4444444444444",ImgPath);
-                FirebaseDatabase.getInstance().getReference().child("approved_users").child(ImgPath).child("name").addValueEventListener(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child("OCR").child(ImgPath).child("name").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        String value = dataSnapshot.getValue(String.class);
-                        Log.e("4444444444444",value);
-                        Toast.makeText(UploadOcrActivity.this,value,Toast.LENGTH_LONG).show();
+                        OCRModel group = dataSnapshot.getValue(OCRModel.class);
+                        BMI = group.getBMI();
+                        muscle = group.getmuscle();
+                        Log.e("66666666666","무게"+muscle);
+                        basal_metabolic = group.getbasal_metabolic();
+                        protein=group.getprotein();
+                        kidney=group.getkidney();
+                        weight=group.getweight();
+                        body_water=group.getbody_water();
+                        body_fat=group.getbody_fat();
+                        Toast.makeText(UploadOcrActivity.this,"BMI : "+BMI+" 골격근량 : "+muscle+" 기초대사량 : "+basal_metabolic+" 단백질 : "+protein+" 신장 : "+kidney+" 체중 : "+weight,Toast.LENGTH_LONG).show();
+//                        String value = dataSnapshot.getValue(String.class);
+//                        Log.e("5555555555",value);
+//                        Toast.makeText(UploadOcrActivity.this,value,Toast.LENGTH_LONG).show();
 //                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
 //                            String name = ds.child("name").getValue(String.class);
 //                            Toast.makeText(UploadActivity.this,name,Toast.LENGTH_LONG).show();

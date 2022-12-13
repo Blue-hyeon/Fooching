@@ -72,7 +72,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
     //  SERVER URL
     //String UPLOAD_URL = "http://172.30.1.20:3000/api/image";
-    String UPLOAD_URL = "http://192.168.2.116:3000/api/image/";
+    String UPLOAD_URL = "http://192.168.1.4:3000/api/image/";
     @Override
     protected void onStart() {
         getPermissions();
@@ -145,7 +145,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
             case R.id.btn_get:
                 final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 Log.e("4444444444444",ImgPath);
-                FirebaseDatabase.getInstance().getReference().child("approved_users").child(ImgPath).child("name").addValueEventListener(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child("calorie").child(ImgPath).child("name").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String value = dataSnapshot.getValue(String.class);
