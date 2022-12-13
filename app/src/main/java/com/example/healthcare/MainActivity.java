@@ -6,8 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Message;
+import android.util.Base64;
+import android.util.Log;
 import android.widget.LinearLayout;
 
 import com.example.healthcare.login.LoginActivity;
@@ -15,6 +21,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -72,5 +81,27 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
+    }
+
+    private void getHashKey(){
+        PackageInfo packageInfo = null;
+        try{
+            packageInfo = getPackageManager().getPackageInfo(getPackageName(), PackageManager.GET_SIGNATURES);
+        }catch (PackageManager.NameNotFoundException e){
+            e.printStackTrace();
+        }
+        if(packageInfo == null)
+            Log.e("KeyHash", "KeyHash:null");
+
+        for(Signature signature : packageInfo.signatures){
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.e("KeyHash", Base64.encodeToString(md.digest(),Base64.DEFAULT));
+            } catch (NoSuchAlgorithmException e){
+                Log.e("keyHash", "Unable to get MessageDigest. signature =" + signature, e);
+;            }
+
+        }
     }
 }

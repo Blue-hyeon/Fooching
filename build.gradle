@@ -2,6 +2,9 @@
 buildscript {
     repositories {
         google()
+        maven { url 'http://devrepo.kakao.com:8088/nexus/content/groups/public/'
+            allowInsecureProtocol true}
+
         mavenCentral()
     }
     dependencies {
