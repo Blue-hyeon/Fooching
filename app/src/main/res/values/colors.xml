@@ -18,4 +18,5 @@
     <color name="red">#E50A0A</color>
     <color name="mint">#EFF1ED</color>
     <color name="textgray">#595959</color>
+    <color name="transparent">#00FFFFFF</color>
 </resources>
