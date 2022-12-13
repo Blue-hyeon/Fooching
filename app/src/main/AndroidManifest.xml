@@ -41,7 +41,8 @@
             android:exported="true" />
         <activity
             android:name=".login.SignupActivity"
-            android:exported="true" />
+            android:exported="true" >
+        </activity>
         <activity
             android:name=".login.LoginActivity"
             android:exported="true" />
