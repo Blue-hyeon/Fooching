@@ -8,4 +8,8 @@ public class UserModel {
     public String weight;
     public int level;
     public String comment;
+    public String trainerLocation;
+    public String trainerLicense;
+    public String trainerAward;
+    public String trainerIntroduce;
 }

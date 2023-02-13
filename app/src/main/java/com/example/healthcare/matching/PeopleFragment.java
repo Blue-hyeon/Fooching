@@ -51,8 +51,6 @@ public class PeopleFragment extends Fragment {
         View view=inflater.inflate(R.layout.fragment_people,container,false);
         userModels = new ArrayList<>();
 
-        final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
         EditText editText = view.findViewById(R.id.matching_search_et);
 //        PeopleFragmentRecyclerViewAdapter adapter = new PeopleFragmentRecyclerViewAdapter();
         editText.addTextChangedListener(new TextWatcher() {

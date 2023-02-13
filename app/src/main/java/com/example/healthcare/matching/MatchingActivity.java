@@ -44,7 +44,8 @@ public class MatchingActivity extends AppCompatActivity {
     private TextView trainerlocation;
     private TextView trainerinfo;
     private ImageView trainerimage;
-
+    private TextView trainerLicense;
+    private TextView trainerintroduce;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +58,9 @@ public class MatchingActivity extends AppCompatActivity {
         trainerlocation = (TextView) findViewById(R.id.matching_cv_location);
         trainerinfo=(TextView) findViewById(R.id.matching_cv_info);
         trainerimage=(ImageView) findViewById(R.id.matching_cv_profile);
+        trainerLicense=(TextView) findViewById(R.id.license_content_tv);
+        trainerintroduce=(TextView) findViewById(R.id.introduce_content_tv);
+
         textbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,11 +96,21 @@ public class MatchingActivity extends AppCompatActivity {
 
                     userModels.add(userModel);
                 }
-                Log.e("333333333",userModels.get(0).userName);
                 if(userModels.get(0).comment!=null) {
                     trainerinfo.setText(userModels.get(0).comment);
                 }
-                Log.e("333333333",userModels.get(0).profileImageUrl);
+                if(userModels.get(0).trainerLocation!=null) {
+                    trainerlocation.setText(userModels.get(0).trainerLocation);
+                }
+                if(userModels.get(0).trainerLicense!=null) {
+                    trainerLicense.setText(userModels.get(0).trainerLicense);
+                }
+                if(userModels.get(0).trainerLicense!=null) {
+                    trainerLicense.setText(userModels.get(0).trainerLicense);
+                }
+                if(userModels.get(0).trainerIntroduce!=null) {
+                    trainerintroduce.setText(userModels.get(0).trainerIntroduce);
+                }
                 trainername.setText(userModels.get(0).userName);
                 Glide.with(getApplicationContext())
                         .load(userModels.get(0).profileImageUrl)
