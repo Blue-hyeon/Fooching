@@ -27,6 +27,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.healthcare.model.OCRModel;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -69,8 +70,7 @@ public class UploadOcrActivity extends AppCompatActivity implements View.OnClick
     private AlertDialog.Builder builder;
 
     //  SERVER URL
-    //String UPLOAD_URL = "http://172.30.1.20:3000/api/image";
-    String UPLOAD_URL = "http://192.168.1.4:3000/ocr/image/";
+
     @Override
     protected void onStart() {
         getPermissions();
@@ -82,6 +82,7 @@ public class UploadOcrActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upload_ocr);
         initVars();
+        final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
         btn_get = (Button) findViewById(R.id.btn_get);
 //      image view on click listener
@@ -154,6 +155,13 @@ public class UploadOcrActivity extends AppCompatActivity implements View.OnClick
                         weight=group.getweight();
                         body_water=group.getbody_water();
                         body_fat=group.getbody_fat();
+                        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("ocrinfo").setValue(group).addOnSuccessListener(new OnSuccessListener<Void>(){
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                //SignupActivity.this.finish();
+                                Log.e("33333333","수정되었습니다.");
+                            }
+                        });
                         Toast.makeText(UploadOcrActivity.this,"BMI : "+BMI+" 골격근량 : "+muscle+" 기초대사량 : "+basal_metabolic+" 단백질 : "+protein+" 신장 : "+kidney+" 체중 : "+weight,Toast.LENGTH_LONG).show();
 //                        String value = dataSnapshot.getValue(String.class);
 //                        Log.e("5555555555",value);

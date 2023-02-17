@@ -68,18 +68,6 @@ public class TrainerInfoActivity extends AppCompatActivity {
                 }
 
 
-//                HashMap<String,Object> hashMap =new HashMap<>();
-//                hashMap.put("userName",userModels.get(0).userName);
-//                hashMap.put("profileImageUrl",userModels.get(0).profileImageUrl);
-//                hashMap.put("uid",userModels.get(0).uid);
-//                hashMap.put("height",userModels.get(0).height);
-//                hashMap.put("weight",userModels.get(0).weight);
-//                hashMap.put("level",userModels.get(0).level);
-//                hashMap.put("comment",userModels.get(0).comment);
-//                hashMap.put("trainerLocation",trainer_Location.getText().toString());
-//                hashMap.put("trainerLicense",trainer_License.getText().toString());
-//                hashMap.put("trainerAward",trainer_Award.getText().toString());
-//                hashMap.put("trainerIntroduce",trainer_Introduce.getText().toString());
                 trainer_Info_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -101,6 +89,20 @@ public class TrainerInfoActivity extends AppCompatActivity {
                                 Log.e("33333333","수정되었습니다.");
                             }
                         });
+
+                        //TrainerModel 사용
+//                        TrainerModel trainerModel = new TrainerModel();
+//                        trainerModel.trainerLocation=trainer_Location.getText().toString();
+//                        trainerModel.trainerLicense=trainer_License.getText().toString();
+//                        trainerModel.trainerAward=trainer_Award.getText().toString();
+//                        trainerModel.trainerIntroduce=trainer_Introduce.getText().toString();
+//                        FirebaseDatabase.getInstance().getReference().child("users").child(userModels.get(0).uid).child("trainerinfo").setValue(trainerModel).addOnSuccessListener(new OnSuccessListener<Void>(){
+//                            @Override
+//                            public void onSuccess(Void aVoid) {
+//                                //SignupActivity.this.finish();
+//                                Log.e("33333333","수정되었습니다.");
+//                            }
+//                        });
                     }
                 });
 
