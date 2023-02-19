@@ -1,5 +1,6 @@
 package com.example.healthcare.login;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.healthcare.R;
@@ -37,12 +39,14 @@ public class SignupActivity extends AppCompatActivity {
     private EditText weight;
     private EditText height;
     private Button signup;
+    private int levelCount;
     private ImageView profileImage;
     private Uri uri;
     private FirebaseRemoteConfig mFirebaseRemoteConfig;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = database.getReference();
     private FirebaseAuth firebaseAuth;
+    private RadioGroup radioGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,9 @@ public class SignupActivity extends AppCompatActivity {
         height=(EditText) findViewById(R.id.signupactivity_height);
         signup=(Button) findViewById(R.id.signupactivity_signup_button);
         profileImage=(ImageView) findViewById(R.id.signupactivity_profile);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(radioGroupButtonChangeListener);
+
         profileImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -100,7 +107,7 @@ public class SignupActivity extends AppCompatActivity {
                                         userModel.userName = name.getText().toString();
                                         userModel.weight=weight.getText().toString();
                                         userModel.height=height.getText().toString();
-                                        userModel.level=0;
+                                        userModel.level=levelCount;
                                         userModel.profileImageUrl=imageUrl.getResult().toString();
                                         userModel.uid=FirebaseAuth.getInstance().getCurrentUser().getUid();
                                         FirebaseDatabase.getInstance().getReference().child("users").child(uid).setValue(userModel).addOnSuccessListener(new OnSuccessListener<Void>(){
@@ -119,6 +126,18 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+    RadioGroup.OnCheckedChangeListener radioGroupButtonChangeListener = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+            if(i == R.id.rg_btn1){
+                levelCount=1;
+            }
+            else if(i == R.id.rg_btn2){
+                levelCount=0;
+            }
+        }
+    };
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

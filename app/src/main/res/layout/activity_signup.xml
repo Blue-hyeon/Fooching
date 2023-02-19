@@ -81,6 +81,38 @@
         android:hint="height"
         android:backgroundTint="@color/teal_700">
     </EditText>
+    <TextView
+        android:gravity="center"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        android:text="트레이너 회원 선택"
+        android:textColor="@color/teal_700"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:orientation="horizontal"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:layout_weight="1"
+            android:text="트레이너"
+            android:id="@+id/rg_btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/teal_700"/>
+
+        <RadioButton
+            android:layout_weight="1"
+            android:text="회원"
+            android:id="@+id/rg_btn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/teal_700"/>
+
+    </RadioGroup>
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/signupactivity_signup_button"
         android:layout_width="wrap_content"
@@ -91,4 +123,5 @@
         android:textColor="#FFFFFF"
         android:textStyle="bold"
         android:background="@color/teal_700"/>
+
 </LinearLayout>
