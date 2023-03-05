@@ -9,12 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.healthcare.CalenderActivity;
 import com.example.healthcare.R;
+import com.example.healthcare.UploadActivity;
 import com.example.healthcare.model.ChatModel;
 import com.example.healthcare.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +26,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -55,7 +60,7 @@ public class MessageActivity extends AppCompatActivity {
     private String chatRoomUid;
     private RecyclerView recyclerView;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
-
+    private Button calenderbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +71,7 @@ public class MessageActivity extends AppCompatActivity {
         editText = (EditText) findViewById(R.id.messageActivity_Edit);
         recyclerView = (RecyclerView) findViewById(R.id.messageActivity_recyclerview);
         chatroom = (TextView) findViewById(R.id.chat_title_tv);
+        calenderbutton = (Button) findViewById(R.id.messageActivity_calenderButton);
 
         FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -79,6 +85,7 @@ public class MessageActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
 
             }
+
         });
 //        NavigationView navigationView = findViewById(R.id.nav_view);
 //
@@ -109,6 +116,18 @@ public class MessageActivity extends AppCompatActivity {
                             editText.setText("");
                         }
                     });
+                }
+            }
+        });
+        calenderbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MessageActivity.this, CalenderActivity.class);
+                intent.putExtra("destinationUid",destinationUid);
+                ActivityOptions activityOptions = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                    activityOptions = ActivityOptions.makeCustomAnimation(MessageActivity.this, R.anim.fromright, R.anim.toleft);
+                    startActivity(intent,activityOptions.toBundle());
                 }
             }
         });
