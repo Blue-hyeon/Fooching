@@ -46,6 +46,8 @@ public class HomeFragment extends Fragment {
         button = (ImageButton)view.findViewById(R.id.setting_button);
         today_carb_cal=(TextView)view.findViewById(R.id.home_today_carb_cal_tv);
         final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        //users테이블에 자기정보에 저장된 calinfo정보에 데이터가 들어가 있으면 가져오고 아니면 0으로 설정합니다.
         FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -69,6 +71,8 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(view.getContext(), UploadActivity.class));
             }
         });
+
+        //트레이너 정보 기입창으로 이동하는 floatingButton
         floatingTrainerInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

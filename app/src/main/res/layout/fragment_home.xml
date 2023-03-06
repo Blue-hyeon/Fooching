@@ -247,6 +247,8 @@
         android:src="@android:drawable/stat_notify_chat"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <!--트레이너 정보 기입창으로 이동-->
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/homefragment_trainerInfoButton"
         android:layout_width="wrap_content"

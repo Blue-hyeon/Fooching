@@ -70,7 +70,8 @@ public class UploadOcrActivity extends AppCompatActivity implements View.OnClick
     private AlertDialog.Builder builder;
 
     //  SERVER URL
-
+    //String UPLOAD_URL = "http://172.30.1.20:3000/api/image";
+    String UPLOAD_URL = "http://192.168.1.4:3000/ocr/image/";
     @Override
     protected void onStart() {
         getPermissions();
@@ -155,6 +156,7 @@ public class UploadOcrActivity extends AppCompatActivity implements View.OnClick
                         weight=group.getweight();
                         body_water=group.getbody_water();
                         body_fat=group.getbody_fat();
+                        //받아온 ocr 정보를 users 테이블에 ocrinfo에 저장합니다.
                         FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("ocrinfo").setValue(group).addOnSuccessListener(new OnSuccessListener<Void>(){
                             @Override
                             public void onSuccess(Void aVoid) {

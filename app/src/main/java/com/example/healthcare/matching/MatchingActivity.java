@@ -87,6 +87,7 @@ public class MatchingActivity extends AppCompatActivity {
     }
     void setCardView(){
         ArrayList<UserModel> userModels = new ArrayList<>();
+        //선택한 트레이너의 정보를 볼 수 있도록 가져옵니다.
         FirebaseDatabase.getInstance().getReference().child("users").orderByChild("uid").equalTo(destinationUid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -25,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+//트레이너 정보 기입창
 public class TrainerInfoActivity extends AppCompatActivity {
     private EditText trainer_License;
     private EditText trainer_Location;
@@ -43,6 +43,7 @@ public class TrainerInfoActivity extends AppCompatActivity {
         trainer_Info_button=findViewById(R.id.trainer_Info_button);
         final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Log.e("33333333",myUid);
+        //현재 자기 정보를 users 테이블에서 알아냅니다.
         FirebaseDatabase.getInstance().getReference().child("users").orderByChild("uid").equalTo(myUid).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -66,8 +67,7 @@ public class TrainerInfoActivity extends AppCompatActivity {
                 if(userModels.get(0).trainerIntroduce!=null) {
                     trainer_Introduce.setText(userModels.get(0).trainerIntroduce);
                 }
-
-
+                //버튼을 눌러서 트레이너 정보를 자기 users창에 저장합니다.
                 trainer_Info_button.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {

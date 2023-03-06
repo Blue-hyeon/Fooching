@@ -86,6 +86,7 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--캘린더 창으로 이동-->
     <Button
         android:id="@+id/messageActivity_calenderButton"
         android:layout_width="wrap_content"

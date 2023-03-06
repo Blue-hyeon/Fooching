@@ -31,7 +31,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.healthcare.model.CalorieModel;
 import com.example.healthcare.model.UserModel;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -71,6 +73,8 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
     private AlertDialog.Builder builder;
 
     //  SERVER URL
+    //String UPLOAD_URL = "http://172.30.1.20:3000/api/image";
+    String UPLOAD_URL = "http://192.168.1.4:3000/api/image/";
 
     @Override
     protected void onStart() {
@@ -149,6 +153,17 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String value = dataSnapshot.getValue(String.class);
                         Log.e("4444444444444",value);
+
+                        CalorieModel cal = new CalorieModel();
+                        cal.setcalorie(value);
+                        //받아온 칼로리 정보를 users 테이블에 calinfo에 저장합니다.
+                        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").setValue(cal).addOnSuccessListener(new OnSuccessListener<Void>(){
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                //SignupActivity.this.finish();
+                                Log.e("33333333","수정되었습니다.");
+                            }
+                        });
                         Toast.makeText(UploadActivity.this,value,Toast.LENGTH_LONG).show();
 //                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
 //                            String name = ds.child("name").getValue(String.class);

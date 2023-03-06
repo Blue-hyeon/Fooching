@@ -45,7 +45,7 @@ public class CalenderActivity extends AppCompatActivity {
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
     }
-
+    //저장된 운동정보를 불러옵니다.
     private void calendarClicked(){
         databaseReference.child("users").child(destinationUid).child("Calendar").child(stringDateSelected).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -62,7 +62,7 @@ public class CalenderActivity extends AppCompatActivity {
             }
         });
     }
-
+    //save 버튼을 통해서 운동정보를 설정된 날짜에 저장합니다. 정보는 users 테이블에 Calendar의 년(4자리)월(0없이)일(0없이) 형태의 key정보로 저장됩니다.
     public void buttonSaveEvent(View view){
         databaseReference.child("users").child(destinationUid).child("Calendar").child(stringDateSelected).setValue(editText.getText().toString());
     }

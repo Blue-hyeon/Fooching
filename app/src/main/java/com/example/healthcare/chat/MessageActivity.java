@@ -119,6 +119,8 @@ public class MessageActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //캘린더 창으로 이동하는 버튼입니다.
         calenderbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
