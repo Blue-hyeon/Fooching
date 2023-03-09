@@ -17,14 +17,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imagetoupload"
         app:layout_constraintVertical_bias="0.26" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadbtn">
+
+        <RadioButton
+            android:id="@+id/rg_btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="아침"
+            android:textColor="@color/teal_700" />
+
+        <RadioButton
+            android:id="@+id/rg_btn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="점심"
+            android:textColor="@color/teal_700" />
+
+        <RadioButton
+            android:id="@+id/rg_btn3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="저녁"
+            android:textColor="@color/teal_700" />
+
+    </RadioGroup>
     <Button
         android:id="@+id/btn_get"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
         android:text="GET"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/uploadbtn"
         app:layout_constraintVertical_chainStyle="packed" />
     <ImageView
         android:id="@+id/imagetoupload"

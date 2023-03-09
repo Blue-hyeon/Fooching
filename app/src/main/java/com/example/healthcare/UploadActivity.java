@@ -1,5 +1,6 @@
 package com.example.healthcare;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import android.Manifest;
@@ -56,6 +58,8 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
     private Retrofit retrofit;
     private APIInterface service;
+    private RadioGroup radioGroup;
+    private int foodtime;
 
     //  Select image from gallery: ImageView
     ImageView imageToUpload;
@@ -91,6 +95,9 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         initVars();
 
         btn_get = (Button) findViewById(R.id.btn_get);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(radioGroupButtonChangeListener);
+
 //      image view on click listener
         imageToUpload.setOnClickListener(v -> {
             Intent intent = new Intent();
@@ -142,6 +149,21 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    RadioGroup.OnCheckedChangeListener radioGroupButtonChangeListener = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+            if(i == R.id.rg_btn1){
+                foodtime=1;
+            }
+            else if(i == R.id.rg_btn2){
+                foodtime=2;
+            }
+            else if(i == R.id.rg_btn3){
+                foodtime=3;
+            }
+        }
+    };
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -157,7 +179,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                         CalorieModel cal = new CalorieModel();
                         cal.setcalorie(value);
                         //받아온 칼로리 정보를 users 테이블에 calinfo에 저장합니다.
-                        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").setValue(cal).addOnSuccessListener(new OnSuccessListener<Void>(){
+                        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child(String.valueOf(foodtime)).setValue(cal).addOnSuccessListener(new OnSuccessListener<Void>(){
                             @Override
                             public void onSuccess(Void aVoid) {
                                 //SignupActivity.this.finish();

@@ -42,6 +42,8 @@ public class HomeFragment extends Fragment {
     FloatingActionButton floatingTrainerInfoButton;
     ImageButton button;
     TextView today_carb_cal;
+    TextView today_pro_cal_tv;
+    TextView today_fat_cal_tv;
     SimpleDateFormat simpleDate;
     long now;
     Date mDate;
@@ -52,6 +54,8 @@ public class HomeFragment extends Fragment {
         floatingTrainerInfoButton = (FloatingActionButton)view.findViewById(R.id.homefragment_trainerInfoButton);
         button = (ImageButton)view.findViewById(R.id.setting_button);
         today_carb_cal=(TextView)view.findViewById(R.id.home_today_carb_cal_tv);
+        today_pro_cal_tv=(TextView)view.findViewById(R.id.home_today_pro_cal_tv);
+        today_fat_cal_tv=(TextView) view.findViewById(R.id.home_today_fat_cal_tv);
         final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         simpleDate = new SimpleDateFormat("yyyyMd");
         now = System.currentTimeMillis();
@@ -62,9 +66,28 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
-                String[] results = value.split(", ");
-                for (int i = 0; i < results.length; i++) {
-                    Log.e("3333333","results[" +i + "] = " + results[i]);
+                if(value !=null) {
+                    String[] results = value.split(", ");
+                    for (int i = 0; i < results.length; i++) {
+                        Log.e("3333333", "results[" + i + "] = " + results[i]);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+            }
+        });
+        //users테이블에 자기정보에 저장된 calinfo정보에 데이터가 들어가 있으면 가져오고 아니면 0으로 설정합니다.
+        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child("1").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                CalorieModel today_cal = dataSnapshot.getValue(CalorieModel.class);
+                if(today_cal != null) {
+                    today_carb_cal.setText(today_cal.getcalorie()+"cal");
+                }
+                else{
+                    today_carb_cal.setText("0"+"cal");
                 }
             }
 
@@ -73,22 +96,38 @@ public class HomeFragment extends Fragment {
                 today_carb_cal.setText("0");
             }
         });
-        //users테이블에 자기정보에 저장된 calinfo정보에 데이터가 들어가 있으면 가져오고 아니면 0으로 설정합니다.
-        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child("2").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CalorieModel today_cal = dataSnapshot.getValue(CalorieModel.class);
                 if(today_cal != null) {
-                    today_carb_cal.setText(today_cal.getcalorie());
+                    today_pro_cal_tv.setText(today_cal.getcalorie()+"cal");
                 }
                 else{
-                    today_carb_cal.setText("0");
+                    today_pro_cal_tv.setText("0"+"cal");
                 }
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                today_carb_cal.setText("0");
+                today_pro_cal_tv.setText("0");
+            }
+        });
+        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child("3").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                CalorieModel today_cal = dataSnapshot.getValue(CalorieModel.class);
+                if(today_cal != null) {
+                    today_fat_cal_tv.setText(today_cal.getcalorie()+"cal");
+                }
+                else{
+                    today_fat_cal_tv.setText("0"+"cal");
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                today_fat_cal_tv.setText("0");
             }
         });
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
