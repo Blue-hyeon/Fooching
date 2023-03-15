@@ -18,7 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
-import com.example.healthcare.MapActivity;
+//import com.example.healthcare.MapActivity;
 import com.example.healthcare.R;
 import com.example.healthcare.UploadOcrActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -58,9 +58,9 @@ public class MypageFragment extends Fragment {
         MapImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MapActivity.class);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
-                startActivity(intent);
+//                Intent intent = new Intent(getActivity(), MapActivity.class);
+//                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+//                startActivity(intent);
             }
         });
 

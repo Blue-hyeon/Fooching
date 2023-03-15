@@ -86,8 +86,28 @@
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <!--캘린더 창으로 이동-->
+    <Button
+        android:id="@+id/messageActivity_calenderButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/background_button"
+        android:text="운동설정"
+        android:textColor="@color/white"
+        android:textSize="10sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-<!--    <androidx.drawerlayout.widget.DrawerLayout-->
+
+
+
+    <!--    <androidx.drawerlayout.widget.DrawerLayout-->
 <!--        android:id="@+id/chat_drawer"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="match_parent"-->
