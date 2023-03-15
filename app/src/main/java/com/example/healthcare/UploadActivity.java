@@ -1,5 +1,6 @@
 package com.example.healthcare;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import android.Manifest;
@@ -31,7 +33,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.healthcare.model.CalorieModel;
 import com.example.healthcare.model.UserModel;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -54,6 +58,8 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
     private Retrofit retrofit;
     private APIInterface service;
+    private RadioGroup radioGroup;
+    private int foodtime;
 
     //  Select image from gallery: ImageView
     ImageView imageToUpload;
@@ -72,7 +78,8 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
     //  SERVER URL
     //String UPLOAD_URL = "http://172.30.1.20:3000/api/image";
-    String UPLOAD_URL = "http://192.168.2.116:3000/api/image/";
+    String UPLOAD_URL = "http://192.168.1.4:3000/api/image/";
+
     @Override
     protected void onStart() {
         getPermissions();
@@ -88,6 +95,9 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         initVars();
 
         btn_get = (Button) findViewById(R.id.btn_get);
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        radioGroup.setOnCheckedChangeListener(radioGroupButtonChangeListener);
+
 //      image view on click listener
         imageToUpload.setOnClickListener(v -> {
             Intent intent = new Intent();
@@ -139,17 +149,43 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
     }
 
+    RadioGroup.OnCheckedChangeListener radioGroupButtonChangeListener = new RadioGroup.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(RadioGroup radioGroup, @IdRes int i) {
+            if(i == R.id.rg_btn1){
+                foodtime=1;
+            }
+            else if(i == R.id.rg_btn2){
+                foodtime=2;
+            }
+            else if(i == R.id.rg_btn3){
+                foodtime=3;
+            }
+        }
+    };
+
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_get:
                 final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 Log.e("4444444444444",ImgPath);
-                FirebaseDatabase.getInstance().getReference().child("approved_users").child(ImgPath).child("name").addValueEventListener(new ValueEventListener() {
+                FirebaseDatabase.getInstance().getReference().child("calorie").child(ImgPath).child("name").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         String value = dataSnapshot.getValue(String.class);
                         Log.e("4444444444444",value);
+
+                        CalorieModel cal = new CalorieModel();
+                        cal.setcalorie(value);
+                        //받아온 칼로리 정보를 users 테이블에 calinfo에 저장합니다.
+                        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child(String.valueOf(foodtime)).setValue(cal).addOnSuccessListener(new OnSuccessListener<Void>(){
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                //SignupActivity.this.finish();
+                                Log.e("33333333","수정되었습니다.");
+                            }
+                        });
                         Toast.makeText(UploadActivity.this,value,Toast.LENGTH_LONG).show();
 //                        for(DataSnapshot ds : dataSnapshot.getChildren()) {
 //                            String name = ds.child("name").getValue(String.class);

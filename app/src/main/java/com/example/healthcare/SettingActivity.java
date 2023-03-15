@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class SettingActivity extends AppCompatActivity {
     private TextView textivewDelete;
+    private TextView textviewLogout;
     private FirebaseAuth firebaseAuth;
 
     @Override
@@ -26,6 +27,13 @@ public class SettingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         textivewDelete = (TextView) findViewById(R.id.setting_withdraw_tv);
+        textviewLogout = (TextView) findViewById(R.id.setting_logout_tv);
+        textviewLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textLogout();
+            }
+        });
         //initializing firebase authentication object
         firebaseAuth = FirebaseAuth.getInstance();
         //유저가 로그인 하지 않은 상태라면 null 상태이고 이 액티비티를 종료하고 로그인 액티비티를 연다.
@@ -64,5 +72,11 @@ public class SettingActivity extends AppCompatActivity {
                 alert_confirm.show();
             }
         });
+    }
+    public void textLogout(){
+        Toast.makeText(SettingActivity.this, "로그아웃 되었습니다.", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(SettingActivity.this, MainActivity.class);
+        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        startActivity(i);
     }
 }

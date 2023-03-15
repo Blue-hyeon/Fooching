@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".TrainerInfoActivity">
+    <TextView
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:text="트레이너 정보"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/teal_700"
+        />
+
+    <EditText
+        android:id="@+id/trainer_Location"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="근무장소"
+        android:backgroundTint="@color/teal_700"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/trainer_License"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="자격증"
+        android:backgroundTint="@color/teal_700"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/trainer_Award"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="수상내역"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+
+    <EditText
+        android:id="@+id/trainer_Introduce"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="자기소개"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/trainer_Info_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="기입하기"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="@color/teal_700"/>
+</LinearLayout>
