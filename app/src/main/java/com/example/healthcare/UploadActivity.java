@@ -45,6 +45,8 @@ import com.koushikdutta.ion.Ion;
 
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
@@ -63,7 +65,10 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
     //  Select image from gallery: ImageView
     ImageView imageToUpload;
-
+    SimpleDateFormat simpleDate;
+    long now;
+    Date mDate;
+    String getTime;
     //  Image upload: Button
     Button uploadBtn,btn_get;
 
@@ -78,7 +83,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
 
     //  SERVER URL
     //String UPLOAD_URL = "http://172.30.1.20:3000/api/image";
-    String UPLOAD_URL = "http://192.168.1.4:3000/api/image/";
+    String UPLOAD_URL = "http://192.168.1.6:3000/api/image/";
 
     @Override
     protected void onStart() {
@@ -97,7 +102,11 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
         btn_get = (Button) findViewById(R.id.btn_get);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         radioGroup.setOnCheckedChangeListener(radioGroupButtonChangeListener);
-
+        simpleDate = new SimpleDateFormat("yyyyMd");
+        now = System.currentTimeMillis();
+        mDate = new Date(now);
+        getTime = simpleDate.format(mDate);
+        btn_get = (Button) findViewById(R.id.btn_get);
 //      image view on click listener
         imageToUpload.setOnClickListener(v -> {
             Intent intent = new Intent();
@@ -179,7 +188,7 @@ public class UploadActivity extends AppCompatActivity implements View.OnClickLis
                         CalorieModel cal = new CalorieModel();
                         cal.setcalorie(value);
                         //받아온 칼로리 정보를 users 테이블에 calinfo에 저장합니다.
-                        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child(String.valueOf(foodtime)).setValue(cal).addOnSuccessListener(new OnSuccessListener<Void>(){
+                        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child(getTime).child(String.valueOf(foodtime)).setValue(cal).addOnSuccessListener(new OnSuccessListener<Void>(){
                             @Override
                             public void onSuccess(Void aVoid) {
                                 //SignupActivity.this.finish();

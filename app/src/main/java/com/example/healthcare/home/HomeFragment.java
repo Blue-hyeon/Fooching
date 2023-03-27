@@ -79,7 +79,7 @@ public class HomeFragment extends Fragment {
             }
         });
         //users테이블에 자기정보에 저장된 calinfo정보에 데이터가 들어가 있으면 가져오고 아니면 0으로 설정합니다.
-        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child("1").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child(getTime).child("1").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CalorieModel today_cal = dataSnapshot.getValue(CalorieModel.class);
@@ -96,7 +96,7 @@ public class HomeFragment extends Fragment {
                 today_carb_cal.setText("0");
             }
         });
-        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child("2").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child(getTime).child("2").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CalorieModel today_cal = dataSnapshot.getValue(CalorieModel.class);
@@ -113,7 +113,7 @@ public class HomeFragment extends Fragment {
                 today_pro_cal_tv.setText("0");
             }
         });
-        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child("3").addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child(getTime).child("3").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 CalorieModel today_cal = dataSnapshot.getValue(CalorieModel.class);
