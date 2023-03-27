@@ -9,12 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.healthcare.CalenderActivity;
 import com.example.healthcare.R;
+import com.example.healthcare.UploadActivity;
 import com.example.healthcare.model.ChatModel;
 import com.example.healthcare.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -23,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -47,15 +51,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.TimeZone;
 
-public class MessageActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MessageActivity extends AppCompatActivity {
     private String destinationUid;
     private Button button;
     private EditText editText;
+    private TextView chatroom;
     private String uid;
     private String chatRoomUid;
     private RecyclerView recyclerView;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
-
+    private Button calenderbutton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,9 +70,26 @@ public class MessageActivity extends AppCompatActivity implements NavigationView
         button = (Button) findViewById(R.id.messageActivity_Button);
         editText = (EditText) findViewById(R.id.messageActivity_Edit);
         recyclerView = (RecyclerView) findViewById(R.id.messageActivity_recyclerview);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        chatroom = (TextView) findViewById(R.id.chat_title_tv);
+        calenderbutton = (Button) findViewById(R.id.messageActivity_calenderButton);
 
-        navigationView.setNavigationItemSelectedListener(this);
+        FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                UserModel userModel =  dataSnapshot.getValue(UserModel.class);
+                chatroom.setText(userModel.userName);
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+
+        });
+//        NavigationView navigationView = findViewById(R.id.nav_view);
+//
+//        navigationView.setNavigationItemSelectedListener(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,6 +116,20 @@ public class MessageActivity extends AppCompatActivity implements NavigationView
                             editText.setText("");
                         }
                     });
+                }
+            }
+        });
+
+        //캘린더 창으로 이동하는 버튼입니다.
+        calenderbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MessageActivity.this, CalenderActivity.class);
+                intent.putExtra("destinationUid",destinationUid);
+                ActivityOptions activityOptions = null;
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                    activityOptions = ActivityOptions.makeCustomAnimation(MessageActivity.this, R.anim.fromright, R.anim.toleft);
+                    startActivity(intent,activityOptions.toBundle());
                 }
             }
         });
@@ -178,9 +214,9 @@ public class MessageActivity extends AppCompatActivity implements NavigationView
             //받아온 메시지를 말풍선으로 출력
             if(comments.get(position).uid.equals(uid)){
                 messageViewHolder.textView_message.setText(comments.get(position).message);
-                messageViewHolder.textView_message.setBackgroundResource(R.drawable.rightbubble);
+                messageViewHolder.textView_message.setBackgroundResource(R.drawable.textbubble_right);
                 messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
-                messageViewHolder.textView_message.setTextSize(25);
+                messageViewHolder.textView_message.setTextSize(15);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
             }else {
                 Glide.with(holder.itemView.getContext())
@@ -189,9 +225,9 @@ public class MessageActivity extends AppCompatActivity implements NavigationView
                         .into(messageViewHolder.imageView_profile);
                 messageViewHolder.textView_name.setText(userModel.userName);
                 messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_message.setBackgroundResource(R.drawable.leftbubble);
+                messageViewHolder.textView_message.setBackgroundResource(R.drawable.textbubble_left);
                 messageViewHolder.textView_message.setText(comments.get(position).message);
-                messageViewHolder.textView_message.setTextSize(25);
+                messageViewHolder.textView_message.setTextSize(15);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
             }
             //시간을 2011.11.11 11:11분과 계산하여 포맷에 맞추어 돌려준다.
@@ -226,52 +262,52 @@ public class MessageActivity extends AppCompatActivity implements NavigationView
 
         }
     }
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_chat_toolbar,menu);
-
-        return true;
-    }
-
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch(item.getItemId())
-        {
-            case R.id.toolbar_menu:
-                Log.e("1111111111111","toolbar_menu");
-                DrawerLayout drawer = findViewById(R.id.chat_drawer);
-                drawer.openDrawer(GravityCompat.END);
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    public boolean onNavigationItemSelected(MenuItem item){
-        int id = item.getItemId();
-        switch (id){
-            case R.id.drawer_exit:
-                Log.e("1111111111111","drawer_exit");
-                exitproject();
-                //break;
-        }
-
-//        DrawerLayout drawer = findViewById(R.id.chat_drawer);
-//        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    private void exitproject(){
-        Map<String, Object> usersMap = new HashMap<>();
-        FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).removeValue();
-        //startActivity(new Intent(v.getContext(), ChatFragment2.class));
-        //getSupportFragmentManager().beginTransaction().replace(R.id.startactivity_framelayout,new ChatFragment()).commit();
-        finish();
-
-    }
-    @Override
-    public void onBackPressed() {
-        finish();
-        overridePendingTransition(R.anim.fromleft,R.anim.toright);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu){
+//        MenuInflater inflater = getMenuInflater();
+//        inflater.inflate(R.menu.menu_chat_toolbar,menu);
+//
+//        return true;
+//    }
+//
+//    public boolean onOptionsItemSelected(MenuItem item){
+//        switch(item.getItemId())
+//        {
+//            case R.id.toolbar_menu:
+//                Log.e("1111111111111","toolbar_menu");
+//                DrawerLayout drawer = findViewById(R.id.chat_drawer);
+//                drawer.openDrawer(GravityCompat.END);
+//                break;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
+//
+//    public boolean onNavigationItemSelected(MenuItem item){
+//        int id = item.getItemId();
+//        switch (id){
+//            case R.id.drawer_exit:
+//                Log.e("1111111111111","drawer_exit");
+//                exitproject();
+//                //break;
+//        }
+//
+////        DrawerLayout drawer = findViewById(R.id.chat_drawer);
+////        drawer.closeDrawer(GravityCompat.START);
+//        return true;
+//    }
+//
+//    private void exitproject(){
+//        Map<String, Object> usersMap = new HashMap<>();
+//        FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).removeValue();
+//        //startActivity(new Intent(v.getContext(), ChatFragment2.class));
+//        //getSupportFragmentManager().beginTransaction().replace(R.id.startactivity_framelayout,new ChatFragment()).commit();
+//        finish();
+//
+////    }
+//    @Override
+//    public void onBackPressed() {
+//        finish();
+//        overridePendingTransition(R.anim.fromleft,R.anim.toright);
+//    }
 }

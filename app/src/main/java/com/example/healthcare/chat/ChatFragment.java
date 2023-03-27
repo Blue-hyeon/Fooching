@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -46,7 +47,7 @@ import java.util.TreeMap;
  * create an instance of this fragment.
  */
 public class ChatFragment extends Fragment {
-    Button button;
+    ImageButton button;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class ChatFragment extends Fragment {
         RecyclerView recyclerView  = (RecyclerView) view.findViewById(R.id.chatfragment_recyclerview);
         recyclerView.setAdapter(new ChatRecyclerViewAdapter());
         recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext()));
-        button = (Button) view.findViewById(R.id.chatItem_exit_button);
+        button = (ImageButton) view.findViewById(R.id.chatItem_exit_button);
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
