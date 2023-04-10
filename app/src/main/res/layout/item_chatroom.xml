@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="10dp"
+    android:paddingStart="10dp">
+    <ImageView
+        android:layout_margin="10dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/chatItem_imageview"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/chatItem_textview_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="17sp"
+            android:text="Chatroom"
+            android:textColor="@color/text"
+            android:layout_marginStart="20dp"
+            app:layout_constraintTop_toTopOf="@id/chatItem_imageview"
+            app:layout_constraintStart_toEndOf="@id/chatItem_imageview"
+            app:layout_constraintBottom_toTopOf="@id/chatItem_textview_lastMessage"/>
+        <TextView
+            android:id="@+id/chatItem_textview_lastMessage"
+            android:text="마지막 메세지"
+            android:layout_below="@+id/chatItem_textview_title"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@id/chatItem_textview_title"
+            app:layout_constraintTop_toBottomOf="@id/chatItem_textview_title"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:text="2011.11.11 11:11"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:textSize="10dp"
+            android:textColor="@android:color/darker_gray"
+            android:id="@+id/chatItem_textview_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ImageButton
+            android:id="@+id/chatItem_exit_button"
+            android:layout_width="70dp"
+            android:layout_height="33dp"
+            android:text="운동설정하기"
+            android:textSize="6dp"
+            android:src="@drawable/background_button"
+            android:background="@color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

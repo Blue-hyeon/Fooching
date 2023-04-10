@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".login.SignupActivity">
+    <TextView
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/teal_700"
+        />
+    <ImageView
+        android:id="@+id/signupactivity_profile"
+        android:src="@drawable/photo_image"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:text="+ 프로필 사진을 추가하세요"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:layout_marginTop="-35dp"
+        android:textColor="@color/text"
+        />
+
+
+    <EditText
+        android:id="@+id/signupactivity_email"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="email"
+        android:backgroundTint="@color/teal_700"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/signupactivity_name"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="name"
+        android:backgroundTint="@color/teal_700"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/signupactivity_password"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:layout_marginTop="10dp"
+        android:hint="password"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+
+    <EditText
+        android:id="@+id/signupactivity_weight"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="weight"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+    <EditText
+        android:id="@+id/signupactivity_height"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="height"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+    <TextView
+        android:gravity="center"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="15dp"
+        android:text="트레이너 회원 선택"
+        android:textColor="@color/teal_700"/>
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:orientation="horizontal"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:layout_weight="1"
+            android:text="트레이너"
+            android:id="@+id/rg_btn1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/teal_700"/>
+
+        <RadioButton
+            android:layout_weight="1"
+            android:text="회원"
+            android:id="@+id/rg_btn2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/teal_700"/>
+
+    </RadioGroup>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/signupactivity_signup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="가입하기"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:background="@color/teal_700"/>
+
+</LinearLayout>
