@@ -24,6 +24,8 @@ public class CalenderActivity extends AppCompatActivity {
     private EditText editText;
     private String stringDateSelected;
     private DatabaseReference databaseReference;
+    private TextView textView;
+    private String plan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class CalenderActivity extends AppCompatActivity {
         destinationUid = getIntent().getStringExtra("destinationUid");
         calendarView = findViewById(R.id.calendarView);
         editText = findViewById(R.id.editText);
+        textView = findViewById(R.id.textview2);
         if(calendarView!=null) {
             calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                 @Override
@@ -50,10 +53,17 @@ public class CalenderActivity extends AppCompatActivity {
         databaseReference.child("users").child(destinationUid).child("Calendar").child(stringDateSelected).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //수정한 부분 오늘의 운동이 목록으로 나오도록 설정
                 if (snapshot.getValue() != null){
-                    editText.setText(snapshot.getValue().toString());
+                    plan = snapshot.getValue().toString();
+                    editText.setText(plan);//editText를 그대로 나둔것은 수정할때 편하기 위해
+                    //,가 띄어쓰기가 되도록 변경
+                    plan = plan.replace(',','\n');
+                    textView.setText(plan);
+                    //textView.setText(snapshot.getValue().toString());
                 }else {
-                    editText.setText("null");
+                    textView.setText("No plan");
+                    editText.setText("No plan");
                 }
             }
 
