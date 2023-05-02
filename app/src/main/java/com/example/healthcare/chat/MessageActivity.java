@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.healthcare.CalenderActivity;
+import com.example.healthcare.FetchPath;
 import com.example.healthcare.R;
 import com.example.healthcare.UploadActivity;
 import com.example.healthcare.model.ChatModel;
@@ -26,9 +27,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityOptions;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -43,6 +51,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -52,8 +64,11 @@ import java.util.Map;
 import java.util.TimeZone;
 
 public class MessageActivity extends AppCompatActivity {
+    private static final int IMG_REQUEST =  1;
+    Bitmap bitmap;
     private String destinationUid;
     private Button button;
+    private Button galleryButton;
     private EditText editText;
     private TextView chatroom;
     private String uid;
@@ -61,6 +76,8 @@ public class MessageActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
     private Button calenderbutton;
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +85,7 @@ public class MessageActivity extends AppCompatActivity {
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         destinationUid = getIntent().getStringExtra("destinationUid");
         button = (Button) findViewById(R.id.messageActivity_Button);
+        galleryButton = (Button) findViewById(R.id.gallery_Button);
         editText = (EditText) findViewById(R.id.messageActivity_Edit);
         recyclerView = (RecyclerView) findViewById(R.id.messageActivity_recyclerview);
         chatroom = (TextView) findViewById(R.id.chat_title_tv);
@@ -120,6 +138,17 @@ public class MessageActivity extends AppCompatActivity {
             }
         });
 
+        //겔러리로 이동하는 버튼입니다.
+        galleryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(intent, IMG_REQUEST);
+            }
+        });
+
         //캘린더 창으로 이동하는 버튼입니다.
         calenderbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +165,79 @@ public class MessageActivity extends AppCompatActivity {
         checkChatRoom();
     }
 
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if( requestCode == IMG_REQUEST && resultCode == RESULT_OK && data != null) {
+            if( requestCode == IMG_REQUEST && resultCode == RESULT_OK && data != null) {
+                Uri path = data.getData();
+                if(path != null) {
+                    try {
+                        InputStream in = getContentResolver().openInputStream(data.getData());
+                        bitmap = BitmapFactory.decodeStream(in);
+                        in.close();
+
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                        byte[] reviewImage = stream.toByteArray();
+                        String simage = byteArrayToBinaryString(reviewImage);
+
+                        ChatModel.Comment comment = new ChatModel.Comment();
+                        comment.uid = uid;
+                        comment.message = simage;
+                        comment.timestamp= ServerValue.TIMESTAMP;
+                        comment.isImage = 1;
+
+                        FirebaseDatabase.getInstance().getReference().child("chatrooms").child(chatRoomUid).child("comments").push().setValue(comment).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                            }
+                        });
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+    public static String byteArrayToBinaryString(byte[] b) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < b.length; ++i) {
+            sb.append(byteToBinaryString(b[i]));
+        }
+        return sb.toString();
+    }
+
+    // 바이너리 바이트를 스트링으로
+    public static String byteToBinaryString(byte n) {
+        StringBuilder sb = new StringBuilder("00000000");
+        for (int bit = 0; bit < 8; bit++) {
+            if (((n >> bit) & 1) > 0) {
+                sb.setCharAt(7 - bit, '1');
+            }
+        }
+        return sb.toString();
+    }
+    public static byte[] binaryStringToByteArray(String s) {
+        int count = s.length() / 8;
+        byte[] b = new byte[count];
+        for (int i = 1; i < count; ++i) {
+            String t = s.substring((i - 1) * 8, i * 8);
+            b[i - 1] = binaryStringToByte(t);
+        }
+        return b;
+    }
+
+    // 스트링을 바이너리 바이트로
+    public static byte binaryStringToByte(String s) {
+        byte ret = 0, total = 0;
+        for (int i = 0; i < 8; ++i) {
+            ret = (s.charAt(7 - i) == '1') ? (byte) (1 << i) : 0;
+            total = (byte) (ret | total);
+        }
+        return total;
+    }
     void checkChatRoom() {
 
         FirebaseDatabase.getInstance().getReference().child("chatrooms").orderByChild("users/" + uid).equalTo(true).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -212,23 +314,54 @@ public class MessageActivity extends AppCompatActivity {
             MessageViewHolder messageViewHolder = ((MessageViewHolder)holder);
 
             //받아온 메시지를 말풍선으로 출력
-            if(comments.get(position).uid.equals(uid)){
+            if(comments.get(position).uid.equals(uid) && comments.get(position).isImage == 0) {
+                messageViewHolder.textView_message.setVisibility(View.VISIBLE);
                 messageViewHolder.textView_message.setText(comments.get(position).message);
                 messageViewHolder.textView_message.setBackgroundResource(R.drawable.textbubble_right);
                 messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
                 messageViewHolder.textView_message.setTextSize(15);
                 messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
-            }else {
+                messageViewHolder.testv.setImageBitmap(null);
+                messageViewHolder.testv.setVisibility(View.INVISIBLE);
+                Log.d("y", "1");
+            }
+            else if(comments.get(position).uid.equals(uid) && comments.get(position).isImage == 1) {
+                String image = comments.get(position).message;
+                byte[] b = binaryStringToByteArray(image);
+                ByteArrayInputStream is = new ByteArrayInputStream(b);
+                Drawable reviewImage = Drawable.createFromStream(is, "reviewImage");
+                messageViewHolder.textView_message.setVisibility(View.INVISIBLE);
+                messageViewHolder.linearLayout_destination.setVisibility(View.INVISIBLE);
+                messageViewHolder.linearLayout_main.setGravity(Gravity.RIGHT);
+                messageViewHolder.testv.setImageDrawable(reviewImage);
+            }
+            else {
                 Glide.with(holder.itemView.getContext())
                         .load(userModel.profileImageUrl)
                         .apply(new RequestOptions().circleCrop())
                         .into(messageViewHolder.imageView_profile);
-                messageViewHolder.textView_name.setText(userModel.userName);
-                messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
-                messageViewHolder.textView_message.setBackgroundResource(R.drawable.textbubble_left);
-                messageViewHolder.textView_message.setText(comments.get(position).message);
-                messageViewHolder.textView_message.setTextSize(15);
-                messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
+                if(comments.get(position).isImage == 0) {
+                    messageViewHolder.textView_message.setVisibility(View.VISIBLE);
+                    messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
+                    messageViewHolder.textView_name.setText(userModel.userName);
+                    messageViewHolder.textView_message.setBackgroundResource(R.drawable.textbubble_left);
+                    messageViewHolder.textView_message.setText(comments.get(position).message);
+                    messageViewHolder.textView_message.setTextSize(15);
+                    messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
+                    messageViewHolder.testv.setImageBitmap(null);
+                    messageViewHolder.testv.setVisibility(View.INVISIBLE);
+                }
+                else{
+                    String image = comments.get(position).message;
+                    byte[] b = binaryStringToByteArray(image);
+                    ByteArrayInputStream is = new ByteArrayInputStream(b);
+                    Drawable reviewImage = Drawable.createFromStream(is, "reviewImage");
+                    messageViewHolder.textView_message.setVisibility(View.INVISIBLE);
+                    messageViewHolder.textView_name.setText(userModel.userName);
+                    messageViewHolder.linearLayout_destination.setVisibility(View.VISIBLE);
+                    messageViewHolder.linearLayout_main.setGravity(Gravity.LEFT);
+                    messageViewHolder.testv.setImageDrawable(reviewImage);
+                }
             }
             //시간을 2011.11.11 11:11분과 계산하여 포맷에 맞추어 돌려준다.
             long unixTime = (long) comments.get(position).timestamp;
@@ -236,7 +369,6 @@ public class MessageActivity extends AppCompatActivity {
             simpleDateFormat.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
             String time = simpleDateFormat.format(date);
             messageViewHolder.textView_timestamp.setText(time);
-
         }
 
         @Override
@@ -250,6 +382,7 @@ public class MessageActivity extends AppCompatActivity {
             public LinearLayout linearLayout_destination;
             public LinearLayout linearLayout_main;
             public TextView textView_timestamp;
+            public ImageView testv;
             public MessageViewHolder(View view){
                 super(view);
                 textView_message = (TextView) view.findViewById(R.id.messageitem_textview);
@@ -258,6 +391,7 @@ public class MessageActivity extends AppCompatActivity {
                 linearLayout_destination = (LinearLayout) view.findViewById(R.id.messageItem_linearlayout_destination);
                 linearLayout_main = (LinearLayout) view.findViewById(R.id.messageItem_linearlayout_main);
                 textView_timestamp=(TextView) view.findViewById(R.id.messageItem_textview_timestamp);
+                testv = (ImageView) view.findViewById(R.id.test);
             }
 
         }
