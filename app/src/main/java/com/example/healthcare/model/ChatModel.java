@@ -12,5 +12,6 @@ public class ChatModel {
         public String uid;
         public String message;
         public Object timestamp;
+        public int isImage = 0;
     }
 }
