@@ -38,7 +38,9 @@
             android:layout_height="0dp"
             android:layout_marginTop="20dp"
             app:layout_constraintBottom_toTopOf="@id/message_edittext_v"
-            app:layout_constraintTop_toBottomOf="@id/chat_title_tv" />
+            app:layout_constraintTop_toBottomOf="@id/chat_title_tv"
+            app:layout_constraintVertical_bias="1.0"
+            tools:layout_editor_absoluteX="7dp" />
 
         <View
             android:id="@+id/message_edittext_v"
@@ -51,7 +53,7 @@
             android:id="@+id/message_text_iv"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="43dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/white_round"
             app:layout_constraintBottom_toBottomOf="@id/message_edittext_v"
@@ -84,27 +86,35 @@
             app:layout_constraintEnd_toEndOf="@id/message_edittext_v"
             app:layout_constraintTop_toTopOf="@id/message_edittext_v" />
 
+        <Button
+            android:id="@+id/gallery_Button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/background_button"
+            android:text="+"
+            android:layout_marginLeft="7dp"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@id/message_edittext_v"
+            app:layout_constraintTop_toTopOf="@id/message_edittext_v"
+            app:layout_constraintLeft_toLeftOf="@id/message_edittext_v"/>
+
+        <Button
+            android:id="@+id/messageActivity_calenderButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="320dp"
+            android:layout_marginBottom="632dp"
+            android:background="@drawable/background_button"
+            android:text="운동설정"
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!--캘린더 창으로 이동-->
-    <Button
-        android:id="@+id/messageActivity_calenderButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/background_button"
-        android:text="운동설정"
-        android:textColor="@color/white"
-        android:textSize="10sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
-
 
 
     <!--    <androidx.drawerlayout.widget.DrawerLayout-->
