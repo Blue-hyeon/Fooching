@@ -78,7 +78,19 @@ public class PeopleFragment extends Fragment {
                         if (userModels.get(a).userName.toLowerCase().contains(searchText.toLowerCase())) {
                             search_list.add(userModels.get(a));
                         }
-                        if (userModels.get(a).comment!=null && userModels.get(a).comment.toLowerCase().contains(searchText.toLowerCase())) {
+                        else if (userModels.get(a).comment!=null && userModels.get(a).comment.toLowerCase().contains(searchText.toLowerCase())) {
+                            search_list.add(userModels.get(a));
+                        }
+                        else if (userModels.get(a).trainerAward !=null && userModels.get(a).trainerAward.toLowerCase().contains(searchText.toLowerCase())) {
+                            search_list.add(userModels.get(a));
+                        }
+                        else if (userModels.get(a).trainerIntroduce !=null && userModels.get(a).trainerIntroduce.toLowerCase().contains(searchText.toLowerCase())) {
+                            search_list.add(userModels.get(a));
+                        }
+                        else if (userModels.get(a).trainerLicense !=null && userModels.get(a).trainerLicense.toLowerCase().contains(searchText.toLowerCase())) {
+                            search_list.add(userModels.get(a));
+                        }
+                        else if (userModels.get(a).trainerLocation !=null && userModels.get(a).trainerLocation.toLowerCase().contains(searchText.toLowerCase())) {
                             search_list.add(userModels.get(a));
                         }
                         adapter.setItems(search_list);
@@ -115,7 +127,7 @@ public class PeopleFragment extends Fragment {
 
                         UserModel userModel = snapshot.getValue(UserModel.class);
 
-                        if(userModel.uid.equals(myUid)){
+                        if(userModel.uid.equals(myUid) || userModel.level==0){
                             continue;
                         }
                         userModels.add(userModel);
