@@ -7,6 +7,7 @@ People's interest in sports is very high. To diet or to build a body , we mainly
 박준구 : https://github.com/JunguPark  
 이승섭 : https://github.com/Leesungsup  
 이서현 : https://github.com/Blue-hyeon  
+이명우 : https://github.com/MyeongW
 
 # Who use
 The target audience of our application is divided into two categories:   PT trainers and fitness beginners. 
