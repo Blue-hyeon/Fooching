@@ -118,12 +118,4 @@
        android:text="상태메세지 등록"
        android:textColor="#ffffff"/>
 
-   <View
-       android:layout_width="365dp"
-       android:layout_height="2dp"
-       android:background="@color/textgray"
-       android:layout_gravity="center"
-       android:layout_marginTop="30dp"/>
-
-
 </LinearLayout>

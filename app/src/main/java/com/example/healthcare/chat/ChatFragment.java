@@ -55,7 +55,7 @@ public class ChatFragment extends Fragment {
         RecyclerView recyclerView  = (RecyclerView) view.findViewById(R.id.chatfragment_recyclerview);
         recyclerView.setAdapter(new ChatRecyclerViewAdapter());
         recyclerView.setLayoutManager(new LinearLayoutManager(inflater.getContext()));
-        button = (ImageButton) view.findViewById(R.id.chatItem_exit_button);
+//        button = (ImageButton) view.findViewById(R.id.chatItem_exit_button);
 //        button.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

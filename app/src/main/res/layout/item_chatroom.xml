@@ -49,15 +49,4 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-        <ImageButton
-            android:id="@+id/chatItem_exit_button"
-            android:layout_width="70dp"
-            android:layout_height="33dp"
-            android:text="운동설정하기"
-            android:textSize="6dp"
-            android:src="@drawable/background_button"
-            android:background="@color/transparent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

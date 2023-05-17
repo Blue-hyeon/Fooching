@@ -53,7 +53,7 @@
             android:id="@+id/message_text_iv"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_marginStart="43dp"
+            android:layout_marginStart="100dp"
             android:layout_marginEnd="20dp"
             android:src="@drawable/white_round"
             app:layout_constraintBottom_toBottomOf="@id/message_edittext_v"
@@ -86,31 +86,44 @@
             app:layout_constraintEnd_toEndOf="@id/message_edittext_v"
             app:layout_constraintTop_toTopOf="@id/message_edittext_v" />
 
-        <Button
-            android:id="@+id/gallery_Button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+        <ImageButton
+            android:id="@+id/messageActivity_calenderButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="50dp"
             android:background="@drawable/background_button"
-            android:text="+"
+            android:scaleType="fitCenter"
+            android:src="@drawable/calendericon"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/message_edittext_v"
+            app:layout_constraintLeft_toLeftOf="@id/message_edittext_v"
+            app:layout_constraintTop_toTopOf="@id/message_edittext_v" />
+
+        <ImageButton
+            android:id="@+id/gallery_Button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/background_button"
+            android:scaleType="fitCenter"
+            android:src="@drawable/imageicon"
             android:layout_marginLeft="7dp"
             android:textColor="@color/white"
-            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="@id/message_edittext_v"
             app:layout_constraintTop_toTopOf="@id/message_edittext_v"
             app:layout_constraintLeft_toLeftOf="@id/message_edittext_v"/>
 
-        <Button
+      <!--  <Button
             android:id="@+id/messageActivity_calenderButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="320dp"
-            android:layout_marginBottom="632dp"
+            android:layout_marginLeft="296dp"
+            android:layout_marginBottom="108dp"
             android:background="@drawable/background_button"
             android:text="운동설정"
             android:textColor="@color/white"
             android:textSize="10sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent" />-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
