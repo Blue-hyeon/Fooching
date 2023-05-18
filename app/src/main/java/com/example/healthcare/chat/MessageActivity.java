@@ -47,6 +47,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -68,14 +69,14 @@ public class MessageActivity extends AppCompatActivity {
     Bitmap bitmap;
     private String destinationUid;
     private Button button;
-    private Button galleryButton;
+    private ImageButton galleryButton;
     private EditText editText;
     private TextView chatroom;
     private String uid;
     private String chatRoomUid;
     private RecyclerView recyclerView;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
-    private Button calenderbutton;
+    private ImageButton calenderbutton;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -85,11 +86,11 @@ public class MessageActivity extends AppCompatActivity {
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         destinationUid = getIntent().getStringExtra("destinationUid");
         button = (Button) findViewById(R.id.messageActivity_Button);
-        galleryButton = (Button) findViewById(R.id.gallery_Button);
+        galleryButton = (ImageButton) findViewById(R.id.gallery_Button);
         editText = (EditText) findViewById(R.id.messageActivity_Edit);
         recyclerView = (RecyclerView) findViewById(R.id.messageActivity_recyclerview);
         chatroom = (TextView) findViewById(R.id.chat_title_tv);
-        calenderbutton = (Button) findViewById(R.id.messageActivity_calenderButton);
+        calenderbutton = (ImageButton) findViewById(R.id.messageActivity_calenderButton);
 
         FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
