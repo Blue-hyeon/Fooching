@@ -11,9 +11,11 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.healthcare.CalenderActivity;
 import com.example.healthcare.FetchPath;
+import com.example.healthcare.InbodyActivity;
 import com.example.healthcare.R;
 import com.example.healthcare.UploadActivity;
 import com.example.healthcare.model.ChatModel;
+import com.example.healthcare.model.OCRModel;
 import com.example.healthcare.model.UserModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -69,6 +71,7 @@ public class MessageActivity extends AppCompatActivity {
     Bitmap bitmap;
     private String destinationUid;
     private Button button;
+    private Button ocrbutton;
     private ImageButton galleryButton;
     private EditText editText;
     private TextView chatroom;
@@ -77,7 +80,7 @@ public class MessageActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
     private ImageButton calenderbutton;
-
+    private Long tranierOrUSer;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,13 +88,30 @@ public class MessageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_message);
         uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         destinationUid = getIntent().getStringExtra("destinationUid");
+
         button = (Button) findViewById(R.id.messageActivity_Button);
         galleryButton = (ImageButton) findViewById(R.id.gallery_Button);
         editText = (EditText) findViewById(R.id.messageActivity_Edit);
         recyclerView = (RecyclerView) findViewById(R.id.messageActivity_recyclerview);
         chatroom = (TextView) findViewById(R.id.chat_title_tv);
         calenderbutton = (ImageButton) findViewById(R.id.messageActivity_calenderButton);
+        ocrbutton = (Button)findViewById(R.id.messageActivity_ocrButton);
+        Log.e("33333333", String.valueOf(uid));
+        Log.e("33333333", String.valueOf(destinationUid));
 
+        FirebaseDatabase.getInstance().getReference().child("users").child(uid).child("level").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                Long l= (Long) dataSnapshot.getValue();
+                Log.e("33333", String.valueOf(l));
+                tranierOrUSer=l;
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         FirebaseDatabase.getInstance().getReference().child("users").child(destinationUid).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -160,6 +180,32 @@ public class MessageActivity extends AppCompatActivity {
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
                     activityOptions = ActivityOptions.makeCustomAnimation(MessageActivity.this, R.anim.fromright, R.anim.toleft);
                     startActivity(intent,activityOptions.toBundle());
+                }
+            }
+        });
+
+        //인바디 창으로 이동하는 버튼입니다.
+        ocrbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MessageActivity.this, InbodyActivity.class);
+                Log.e("1111111111", String.valueOf(tranierOrUSer));
+                Log.e("11111111111",String.valueOf(uid));
+                if(tranierOrUSer==0) {
+                    intent.putExtra("destinationUid", uid);
+                    ActivityOptions activityOptions = null;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                        activityOptions = ActivityOptions.makeCustomAnimation(MessageActivity.this, R.anim.fromright, R.anim.toleft);
+                        startActivity(intent, activityOptions.toBundle());
+                    }
+                }else{
+                    intent.putExtra("destinationUid", destinationUid);
+                    ActivityOptions activityOptions = null;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN) {
+                        activityOptions = ActivityOptions.makeCustomAnimation(MessageActivity.this, R.anim.fromright, R.anim.toleft);
+                        startActivity(intent, activityOptions.toBundle());
+                    }
                 }
             }
         });
