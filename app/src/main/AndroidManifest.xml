@@ -17,6 +17,12 @@
         android:theme="@style/Theme.Healthcare"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".InbodyActivity"
+            android:exported="true" />
+        <activity
+            android:name=".OcrActivity"
+            android:exported="true" />
+        <activity
             android:name=".CalenderActivity"
             android:exported="true" />
         <activity

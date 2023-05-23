@@ -1,6 +1,8 @@
 package com.example.healthcare.model;
 
-public class OCRModel {
+import java.io.Serializable;
+
+public class OCRModel implements Serializable {
     //변수 선언
     private String Abdominal_fat_percentage;
     private String BMI;

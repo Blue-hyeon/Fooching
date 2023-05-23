@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".InbodyActivity">
+    <TextView
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:text="회원 인바디 정보"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="@color/teal_700"
+        />
+
+    <EditText
+        android:id="@+id/Abdominal_fat_percentage_info"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:hint="Abdominal_fat_percentage"
+        android:backgroundTint="@color/teal_700"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/BMI_info"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="BMI"
+        android:backgroundTint="@color/teal_700"
+        >
+    </EditText>
+
+    <EditText
+        android:id="@+id/muscle_info"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="muscle"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+
+    <EditText
+        android:id="@+id/protein_info"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="protein"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+    <EditText
+        android:id="@+id/kidney_info"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="kidney"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+    <EditText
+        android:id="@+id/weight_info"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="weight"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+    <EditText
+        android:id="@+id/body_water_info"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="body_water"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+    <EditText
+        android:id="@+id/body_fat_info"
+        android:layout_width="40mm"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="body_fat"
+        android:backgroundTint="@color/teal_700">
+    </EditText>
+
+</LinearLayout>
