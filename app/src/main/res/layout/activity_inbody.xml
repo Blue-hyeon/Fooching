@@ -1,95 +1,323 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     tools:context=".InbodyActivity">
+
     <TextView
+        android:id="@+id/title"
         android:layout_width="40mm"
         android:layout_height="wrap_content"
         android:text="회원 인바디 정보"
         android:textSize="30sp"
         android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="@color/teal_700"
+        android:textColor="@color/maingreen"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="90dp"
         />
-
-    <EditText
-        android:id="@+id/Abdominal_fat_percentage_info"
-        android:layout_width="40mm"
+    <TextView
+        android:id="@+id/baseinfo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="기본정보"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/maingreen"
         android:layout_marginTop="20dp"
-        android:hint="Abdominal_fat_percentage"
-        android:backgroundTint="@color/teal_700"
+        app:layout_constraintTop_toBottomOf="@id/title"
+        app:layout_constraintStart_toStartOf="@id/baseinfo_2"
         >
-    </EditText>
+    </TextView>
 
-    <EditText
-        android:id="@+id/BMI_info"
-        android:layout_width="40mm"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/baseinfo_2"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:backgroundTint="@color/boxlightgray"
+        android:elevation="15dp"
+        app:cardCornerRadius="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/baseinfo">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/kidney"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="신장"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/maingreen"
+                android:layout_marginTop="-50dp"
+                android:layout_marginStart="70dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+            <EditText
+                android:id="@+id/kidney_info"
+                android:layout_width="30mm"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="kidney"
+                android:backgroundTint="@color/boxlightgray"
+                app:layout_constraintTop_toTopOf="@id/kidney"
+                app:layout_constraintLeft_toRightOf="@id/kidney"
+                app:layout_constraintBottom_toBottomOf="@id/kidney">
+            </EditText>
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="몸무게"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/maingreen"
+                android:layout_marginTop="25dp"
+                app:layout_constraintTop_toBottomOf="@id/kidney"
+                app:layout_constraintStart_toStartOf="@id/kidney"
+                />
+            <EditText
+                android:id="@+id/weight_info"
+                android:layout_width="30mm"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="weight"
+                android:backgroundTint="@color/boxlightgray"
+                app:layout_constraintTop_toTopOf="@id/weight"
+                app:layout_constraintLeft_toRightOf="@id/weight"
+                app:layout_constraintBottom_toBottomOf="@id/weight">
+            </EditText>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/weight_analysis"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="BMI"
-        android:backgroundTint="@color/teal_700"
+        android:text="체중분석"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/maingreen"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/baseinfo_2"
+        app:layout_constraintStart_toStartOf="@id/baseinfo_2"
         >
-    </EditText>
+    </TextView>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/weight_analysis_2"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:backgroundTint="@color/boxlightgray"
+        android:elevation="15dp"
+        app:cardCornerRadius="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/weight_analysis">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/muscle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="근육량"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/maingreen"
+                android:layout_marginTop="-105dp"
+                android:layout_marginStart="70dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
 
-    <EditText
-        android:id="@+id/muscle_info"
-        android:layout_width="40mm"
+            <EditText
+                android:id="@+id/muscle_info"
+                android:layout_width="30mm"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="muscle"
+                android:backgroundTint="@color/boxlightgray"
+                app:layout_constraintTop_toTopOf="@id/muscle"
+                app:layout_constraintLeft_toRightOf="@id/muscle"
+                app:layout_constraintBottom_toBottomOf="@id/muscle">
+            </EditText>
+
+            <TextView
+                android:id="@+id/protein"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="단백질"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/maingreen"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/muscle"
+                app:layout_constraintStart_toStartOf="@id/muscle"
+                />
+            <EditText
+                android:id="@+id/protein_info"
+                android:layout_width="30mm"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="protein"
+                android:backgroundTint="@color/boxlightgray"
+                app:layout_constraintTop_toTopOf="@id/protein"
+                app:layout_constraintLeft_toRightOf="@id/protein"
+                app:layout_constraintBottom_toBottomOf="@id/protein">
+            </EditText>
+
+            <TextView
+                android:id="@+id/body_water"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="체수분"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/maingreen"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/protein"
+                app:layout_constraintStart_toStartOf="@id/protein"
+                />
+            <EditText
+                android:id="@+id/body_water_info"
+                android:layout_width="30mm"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="body_water"
+                android:backgroundTint="@color/boxlightgray"
+                app:layout_constraintTop_toTopOf="@id/body_water"
+                app:layout_constraintLeft_toRightOf="@id/body_water"
+                app:layout_constraintBottom_toBottomOf="@id/body_water">
+            </EditText>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/fat_check"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="muscle"
-        android:backgroundTint="@color/teal_700">
-    </EditText>
+        android:text="비만진단"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/maingreen"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/weight_analysis_2"
+        app:layout_constraintStart_toStartOf="@id/weight_analysis_2"
+        >
+    </TextView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fat_check_2"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:backgroundTint="@color/boxlightgray"
+        android:elevation="15dp"
+        app:cardCornerRadius="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/fat_check">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/BMI"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BMI"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/maingreen"
+                android:layout_marginTop="-105dp"
+                android:layout_marginStart="70dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+            <EditText
+                android:id="@+id/BMI_info"
+                android:layout_width="30mm"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="BMI"
+                android:backgroundTint="@color/boxlightgray"
+                app:layout_constraintTop_toTopOf="@id/BMI"
+                app:layout_constraintLeft_toRightOf="@id/BMI"
+                app:layout_constraintBottom_toBottomOf="@id/BMI"
+                >
+            </EditText>
+            <TextView
+                android:id="@+id/body_fat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="체지방"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/maingreen"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/BMI"
+                app:layout_constraintStart_toStartOf="@id/BMI"
+                />
+            <EditText
+                android:id="@+id/body_fat_info"
+                android:layout_width="30mm"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="body_fat"
+                android:backgroundTint="@color/boxlightgray"
+                app:layout_constraintTop_toTopOf="@id/body_fat"
+                app:layout_constraintLeft_toRightOf="@id/body_fat"
+                app:layout_constraintBottom_toBottomOf="@id/body_fat">
+            </EditText>
+
+            <TextView
+                android:id="@+id/Abdominal_fat_percentage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="복부 지방"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/maingreen"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@id/body_fat"
+                app:layout_constraintStart_toStartOf="@id/body_fat"
+                />
+
+            <EditText
+                android:id="@+id/Abdominal_fat_percentage_info"
+                android:layout_width="30mm"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:hint="Abdominal_fat_percent"
+                android:backgroundTint="@color/boxlightgray"
+                app:layout_constraintTop_toTopOf="@id/Abdominal_fat_percentage"
+                app:layout_constraintLeft_toRightOf="@id/Abdominal_fat_percentage"
+                app:layout_constraintBottom_toBottomOf="@id/Abdominal_fat_percentage"
+                >
+            </EditText>
 
 
-    <EditText
-        android:id="@+id/protein_info"
-        android:layout_width="40mm"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="protein"
-        android:backgroundTint="@color/teal_700">
-    </EditText>
 
-    <EditText
-        android:id="@+id/kidney_info"
-        android:layout_width="40mm"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="kidney"
-        android:backgroundTint="@color/teal_700">
-    </EditText>
 
-    <EditText
-        android:id="@+id/weight_info"
-        android:layout_width="40mm"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="weight"
-        android:backgroundTint="@color/teal_700">
-    </EditText>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <EditText
-        android:id="@+id/body_water_info"
-        android:layout_width="40mm"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="body_water"
-        android:backgroundTint="@color/teal_700">
-    </EditText>
+    </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/body_fat_info"
-        android:layout_width="40mm"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:hint="body_fat"
-        android:backgroundTint="@color/teal_700">
-    </EditText>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
