@@ -55,17 +55,19 @@ public class TrainerInfoActivity extends AppCompatActivity {
                 }
                 Log.e("33333333", String.valueOf(userModels.size()));
                 UserModel updateuserModel = new UserModel();
-                if(userModels.get(0).trainerLocation!=null) {
-                    trainer_Location.setText(userModels.get(0).trainerLocation);
-                }
-                if(userModels.get(0).trainerLicense!=null) {
-                    trainer_License.setText(userModels.get(0).trainerLicense);
-                }
-                if(userModels.get(0).trainerAward!=null) {
-                    trainer_Award.setText(userModels.get(0).trainerAward);
-                }
-                if(userModels.get(0).trainerIntroduce!=null) {
-                    trainer_Introduce.setText(userModels.get(0).trainerIntroduce);
+                if(userModels.size() != 0) {
+                    if (userModels.get(0).trainerLocation != null) {
+                        trainer_Location.setText(userModels.get(0).trainerLocation);
+                    }
+                    if (userModels.get(0).trainerLicense != null) {
+                        trainer_License.setText(userModels.get(0).trainerLicense);
+                    }
+                    if (userModels.get(0).trainerAward != null) {
+                        trainer_Award.setText(userModels.get(0).trainerAward);
+                    }
+                    if (userModels.get(0).trainerIntroduce != null) {
+                        trainer_Introduce.setText(userModels.get(0).trainerIntroduce);
+                    }
                 }
                 //버튼을 눌러서 트레이너 정보를 자기 users창에 저장합니다.
                 trainer_Info_button.setOnClickListener(new View.OnClickListener() {

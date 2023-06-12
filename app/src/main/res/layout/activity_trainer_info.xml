@@ -7,17 +7,21 @@
     android:orientation="vertical"
     tools:context=".TrainerInfoActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white">
-        <Button
+
+        <ImageButton
             android:id="@+id/backBtn"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:backgroundTint="@color/maingreen"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/back_btn"
+            android:background="@color/transparent"
+            android:scaleType="fitCenter"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             android:layout_marginTop="60dp"

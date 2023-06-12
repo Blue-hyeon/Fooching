@@ -71,7 +71,7 @@ public class MessageActivity extends AppCompatActivity {
     Bitmap bitmap;
     private String destinationUid;
     private Button button;
-    private Button ocrbutton;
+    private ImageButton ocrbutton;
     private ImageButton galleryButton;
     private EditText editText;
     private TextView chatroom;
@@ -95,7 +95,7 @@ public class MessageActivity extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.messageActivity_recyclerview);
         chatroom = (TextView) findViewById(R.id.chat_title_tv);
         calenderbutton = (ImageButton) findViewById(R.id.messageActivity_calenderButton);
-        ocrbutton = (Button)findViewById(R.id.messageActivity_ocrButton);
+        ocrbutton = (ImageButton)findViewById(R.id.messageActivity_ocrButton);
         Log.e("33333333", String.valueOf(uid));
         Log.e("33333333", String.valueOf(destinationUid));
 

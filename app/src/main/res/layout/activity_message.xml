@@ -15,7 +15,9 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="20dp"
-            android:src="@drawable/background_button"
+            android:src="@drawable/back_btn"
+            android:background="@color/transparent"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toBottomOf="@id/chat_title_tv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/chat_title_tv" />
@@ -88,42 +90,47 @@
 
         <ImageButton
             android:id="@+id/messageActivity_calenderButton"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginLeft="50dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="10dp"
             android:background="@drawable/background_button"
             android:scaleType="fitCenter"
-            android:src="@drawable/calendericon"
+            android:src="@drawable/calendar"
             android:textColor="@color/white"
+            android:layout_marginEnd="15dp"
+            app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintBottom_toBottomOf="@id/message_edittext_v"
-            app:layout_constraintLeft_toLeftOf="@id/message_edittext_v"
+            app:layout_constraintStart_toEndOf="@id/gallery_Button"
+            app:layout_constraintEnd_toStartOf="@id/messageActivity_Edit"
             app:layout_constraintTop_toTopOf="@id/message_edittext_v" />
 
-        <Button
+        <ImageButton
             android:id="@+id/messageActivity_ocrButton"
-            android:layout_width="60dp"
+            android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginEnd="25dp"
             android:background="@drawable/background_button"
-            android:text="인바디"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
+            android:src="@drawable/inbody"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="@id/message_edittext_v"
             tools:ignore="MissingConstraints" />
 
         <ImageButton
             android:id="@+id/gallery_Button"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
             android:background="@drawable/background_button"
             android:scaleType="fitCenter"
-            android:src="@drawable/imageicon"
-            android:layout_marginLeft="7dp"
+            android:padding="10dp"
+            android:src="@drawable/picture"
             android:textColor="@color/white"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            android:layout_marginStart="10dp"
             app:layout_constraintBottom_toBottomOf="@id/message_edittext_v"
             app:layout_constraintTop_toTopOf="@id/message_edittext_v"
-            app:layout_constraintLeft_toLeftOf="@id/message_edittext_v"/>
+            app:layout_constraintEnd_toStartOf="@id/messageActivity_calenderButton"
+            app:layout_constraintStart_toStartOf="@id/message_edittext_v"/>
 
       <!--  <Button
             android:id="@+id/messageActivity_calenderButton"

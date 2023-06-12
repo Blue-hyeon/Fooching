@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,6 +32,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -45,6 +48,14 @@ public class HomeFragment extends Fragment {
     TextView today_pro_cal_tv;
     TextView today_fat_cal_tv;
     SimpleDateFormat simpleDate;
+
+    RecyclerView recyclerView;
+
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
+
+    ArrayList<String> today_list;
+
     long now;
     Date mDate;
     String getTime;
@@ -57,6 +68,12 @@ public class HomeFragment extends Fragment {
         today_pro_cal_tv=(TextView)view.findViewById(R.id.home_today_pro_cal_tv);
         today_fat_cal_tv=(TextView) view.findViewById(R.id.home_today_fat_cal_tv);
         final String myUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        today_list = new ArrayList<>();
+        recyclerView = view.findViewById(R.id.home_exercise_rv);
+        layoutManager = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layoutManager);
+
         simpleDate = new SimpleDateFormat("yyyyMd");
         now = System.currentTimeMillis();
         mDate = new Date(now);
@@ -66,11 +83,16 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String value = dataSnapshot.getValue(String.class);
+                today_list.clear();
                 if(value !=null) {
                     String[] results = value.split(", ");
                     for (int i = 0; i < results.length; i++) {
+
+                        //adapter연결
+                        today_list.add(results[i]);
                         Log.e("3333333", "results[" + i + "] = " + results[i]);
                     }
+                    adapter.notifyDataSetChanged();
                 }
             }
 
@@ -78,6 +100,10 @@ public class HomeFragment extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
             }
         });
+
+        adapter = new TodayRVAdapter(today_list, getContext());
+        recyclerView.setAdapter(adapter);
+
         //users테이블에 자기정보에 저장된 calinfo정보에 데이터가 들어가 있으면 가져오고 아니면 0으로 설정합니다.
         FirebaseDatabase.getInstance().getReference().child("users").child(myUid).child("calinfo").child(getTime).child("1").addValueEventListener(new ValueEventListener() {
             @Override
